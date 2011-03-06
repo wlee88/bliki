@@ -10,14 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110306223308) do
+ActiveRecord::Schema.define(:version => 20110306234857) do
 
   create_table "boxes", :force => true do |t|
-    t.string   "title"
     t.boolean  "public"
     t.string   "desc"
     t.string   "oftype"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "body"
+    t.integer  "box_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

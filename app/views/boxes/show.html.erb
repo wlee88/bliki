@@ -25,6 +25,15 @@
   <%= @box.url %>
 </p>
 
+<h2>Comments</h2>
+
+<%= render :partial => "comments/comment",
+			:collection => @box.comments %>
+
+<h2>Add a comment:</h2>
+
+<%= render "comments/form" %>
+
 
 <%= link_to 'Edit', edit_box_path(@box) %> |
 <%= link_to 'Back', boxes_path %>

@@ -9,7 +9,10 @@ Blox::Application.routes.draw do
   
   resources :users
   resources :sessions
-  resources :boxes
+  
+  resources :boxes do
+    resources :comments
+  end
 
   get "home/index"
   # The priority is based upon order of creation:
