@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @box.title %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%= @box.public %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%= @box.desc %>
+</p>
+
+<p>
+  <b>Oftype:</b>
+  <%= @box.oftype %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @box.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_box_path(@box) %> |
+<%= link_to 'Back', boxes_path %>
