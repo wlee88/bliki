@@ -1,6 +1,6 @@
 
 <% content_for :title do %>
-<span id="title_text">Public Boxes</span>
+<span id="title_text"><%= get_username(current_user.id) %>'s Boxes</span>
 <% end %>
 
 <div id="box_area">
@@ -13,37 +13,7 @@
 	
 	</div>
 <% end %>	
-<div class="box">
-	<img src="/images/icons/chrome-icon.jpg">
-</div>
 
-<div class="box">
-	<img src="/images/icons/music-icon.jpg">
-</div>
-
-<div class="box">
-	<img src="/images/icons/pdf-icon.gif">
-</div>
-
-<div class="box">
-	<img src="images/icons/pokeball-icon.jpg">
-</div>
-
-<div class="box">
-	<img src="/images/icons/chrome-icon.jpg">
-</div>
-
-<div class="box">
-	<img src="/images/icons/music-icon.jpg">
-</div>
-
-<div class="box">
-	<img src="images/icons/pokeball-icon.jpg">
-</div>
-
-<div class="box">
-	<img src="images/icons/firefox-icon.jpg">
-</div>
 </div>
 <hr />
 <table>

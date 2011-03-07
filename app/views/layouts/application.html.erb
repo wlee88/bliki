@@ -12,11 +12,13 @@
 			
 		<ul>
 			<%= yield :title %>
-			<li><%= link_to "Home", "home/index" %>
-			<li><%= link_to "My Boxes", boxes_path %>
-			<li><%= link_to "Public Boxes", "" %>
+			<li><%= link_to "Home", "/home/index" %>
+			<li><%= link_to "My Boxes", "/boxes/me" %>
+			<li><%= link_to "Public Boxes", boxes_path %>
+			<li><%= link_to "Friends", ""%>
 			<li>	<% if current_user %>
 				    <%= link_to "Log out", log_out_path %>
+			
 		
 		<span id="username_text">Logged in as <%= current_user.username %></span>
 		  <% else %>

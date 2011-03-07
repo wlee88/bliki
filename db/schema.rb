@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110306234857) do
+ActiveRecord::Schema.define(:version => 20110307203256) do
 
   create_table "boxes", :force => true do |t|
     t.boolean  "public"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110306234857) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner"
   end
 
   create_table "comments", :force => true do |t|

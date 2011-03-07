@@ -1,6 +1,17 @@
 class BoxesController < ApplicationController
   # GET /boxes
   # GET /boxes.xml
+  
+  def me
+    @boxes = Box.find(:all, :conditions => ["owner = ?", current_user.id])
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @boxes }
+    end
+  end
+    
+  
   def index
     @boxes = Box.all
 
@@ -41,6 +52,7 @@ class BoxesController < ApplicationController
   # POST /boxes.xml
   def create
     @box = Box.new(params[:box])
+    @box.owner = current_user.id
 
     respond_to do |format|
       if @box.save
