@@ -7,7 +7,9 @@
   <%= csrf_meta_tag %>
 </head>
 <body> 
-
+	
+	<div id="container">
+	<div id="menu_strip">
 	<div id="user_nav">
 			
 		<ul>
@@ -26,6 +28,7 @@
 		    <%= link_to "log in", log_in_path %>
 		  <% end %>
 		</ul>
+		</div>
 	</div>
 	
 
@@ -34,6 +37,6 @@
 	<% end %>
 	
 <%= yield %>
-
+	</div>
 </body>
 </html>

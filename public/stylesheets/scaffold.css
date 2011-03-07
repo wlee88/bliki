@@ -35,13 +35,24 @@ div.field, div.actions {
   background-color: red;
   display: table;
 }
+
+#menu_strip{
+	background: #FF8500;
+	padding: 1px;
+	box-shadow: 10px 10px 20px black;
+	-moz-box-shadow: 0px 0px 5px black;
+	-webkit-box-shadow:0px 0px 20px black;
+	border-radius: 15px;
+	margin-bottom:20px;
+}
 #user_nav{
   padding:0; margin: 40px;
-		
+  
+  
 }
 #user_nav ul
 {
-margin: 0;
+margin:-0;
 padding: 0;
 list-style-type: none;
 text-align: center;
@@ -50,23 +61,30 @@ text-align: center;
 #user_nav ul li
 {
 	display: inline;
-	
+	text-align:center;
 }
 
 #user_nav ul li a
 {
-	border-radius: 15px;
+
 	text-decoration: none;
-	padding: .2em 1em;
+	box-shadow: 10px 10px 20px black;
+	-moz-box-shadow: 0px 0px 5px black;
+	-webkit-box-shadow:0px 0px 20px black;
+	padding-top:45px;
+	
+	padding-bottom: 45px;
+	padding-left:30px;
+	padding-right:30px;
 	color: #fff;
-	background-color: #036;
+	background-color: black;
 
 }
 
 #user_nav ul li a:hover
 {
 color: #fff;
-background-color: #369;
+background-color: #FFA34D;
 }
 
 #username_text{
@@ -112,14 +130,18 @@ background-color: #369;
 }
 
 #box_area{
-	padding-left: 6em;
+
+	margin-left:3em;
+	margin-right: 3em;
+	margin-bottom: 3em;
+	
 }
 .box{
 	background-color: white;
 	display: inline-block;
 	margin: 1px 1px 1px 1px;
-	width: 200px;
-	height: 200px;
+	width: 125px;
+	height: 125px;
 	border: 1px solid black;
 	box-shadow: 10px 10px 20px black;
 	-moz-box-shadow: 0px 0px 5px black;
@@ -127,9 +149,20 @@ background-color: #369;
 }
 
 .box img{
-	width:200px;
-	height: 200px;
+	width:125px;
+	height: 125px;
 	border: 1px solid black;
+}
+
+#container{
+	margin-top: 30px;
+	padding-top: 50px;
+	margin-left: 30px;
+	margin-right: 30px;
+	background: #024C68;
+	box-shadow: 10px 10px 5px black;
+	-moz-box-shadow: 0px 0px 5px black;
+	-webkit-box-shadow:0px 0px 20px black;
 }
 
 

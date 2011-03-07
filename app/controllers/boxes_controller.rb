@@ -11,7 +11,6 @@ class BoxesController < ApplicationController
     end
   end
     
-  
   def index
     @boxes = Box.all
 

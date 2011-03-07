@@ -1,6 +1,6 @@
 
 <% content_for :title do %>
-<span id="title_text"><%= get_username(current_user.id) %>'s Boxes</span>
+<span id="title_text"><%= get_username(current_user.id).capitalize %>'s Boxes</span>
 <% end %>
 
 <div id="box_area">
