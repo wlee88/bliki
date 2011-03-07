@@ -1,5 +1,9 @@
-body { background-color: #04819E; color: #FF7F00; }
+body { background-color: #3AA6D0; color: black	; }
 
+h1{
+	text-shadow:none;
+	font-size:16px;
+}
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
@@ -31,6 +35,18 @@ div.field, div.actions {
   display: table;
 }
 
+#user_nav{
+	margin-left: 41.3%;
+	
+}
+#username_nav{
+	text-align: right;
+	float: right;
+	position: relative;
+	display:inline-block;
+	text-shadow: 2px 2px 2px black; 
+}
+
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -55,3 +71,26 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+.title{}
+
+.box{
+	background-color: white;
+	display: inline-block;
+	margin: 5px 5px 5px 5px;
+	width: 200px;
+	height: 200px;
+	border: 1px solid black;
+	box-shadow: 10px 10px 20px black;
+	-moz-box-shadow: 0px 0px 5px black;
+	-webkit-box-shadow:0px 0px 20px black;
+}
+
+.box img{
+	
+	width:200px;
+	height: 200px;
+	border: 1px solid black;
+}
+
+

@@ -1,8 +1,41 @@
+<div class="title">
 <h1>Listing boxes</h1>
 
+<div class="box">
+	<img src="/images/icons/chrome-icon.jpg">
+</div>
+
+<div class="box">
+	<img src="/images/icons/music-icon.jpg">
+</div>
+
+<div class="box">
+	<img src="/images/icons/pdf-icon.gif">
+</div>
+
+<div class="box">
+	<img src="images/icons/pokeball-icon.jpg">
+</div>
+
+<div class="box">
+	<img src="/images/icons/chrome-icon.jpg">
+</div>
+
+<div class="box">
+	<img src="/images/icons/music-icon.jpg">
+</div>
+
+<div class="box">
+	<img src="images/icons/pokeball-icon.jpg">
+</div>
+
+<div class="box">
+	<img src="images/icons/firefox-icon.jpg">
+</div>
+
+<hr />
 <table>
   <tr>
-    <th>Title</th>
     <th>Public</th>
     <th>Desc</th>
     <th>Oftype</th>
@@ -14,7 +47,6 @@
 
 <% @boxes.each do |box| %>
   <tr>
-    <td><%= box.title %></td>
     <td><%= box.public %></td>
     <td><%= box.desc %></td>
     <td><%= box.oftype %></td>
