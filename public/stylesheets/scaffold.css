@@ -1,8 +1,9 @@
 body { background-color: #3AA6D0; color: black	; }
 
 h1{
-	text-shadow:none;
+	padding:0; margin: 0;
 	font-size:16px;
+	display: inline;
 }
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -34,17 +35,55 @@ div.field, div.actions {
   background-color: red;
   display: table;
 }
-
 #user_nav{
-	margin-left: 41.3%;
+  padding:0; margin: 20px;
+		
+}
+#user_nav ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+text-align: center;
+}
+
+#user_nav ul li
+{
+	display: inline;
 	
 }
-#username_nav{
+
+#user_nav ul li a
+{
+	border-radius: 15px;
+	text-decoration: none;
+	padding: .2em 1em;
+	color: #fff;
+	background-color: #036;
+
+}
+
+#user_nav ul li a:hover
+{
+color: #fff;
+background-color: #369;
+}
+
+#username_text{
 	text-align: right;
+	font-size: 25px;
 	float: right;
 	position: relative;
 	display:inline-block;
 	text-shadow: 2px 2px 2px black; 
+}
+
+#title_text{
+	font-size:25px;
+	color: black;
+	float: left;
+	text-shadow: 2px 2px 2px black; 
+
 }
 
 #error_explanation {
@@ -72,12 +111,13 @@ div.field, div.actions {
   list-style: square;
 }
 
-.title{}
-
+#box_area{
+	padding-left: 6em;
+}
 .box{
 	background-color: white;
 	display: inline-block;
-	margin: 5px 5px 5px 5px;
+	margin: 1px 1px 1px 1px;
 	width: 200px;
 	height: 200px;
 	border: 1px solid black;
@@ -87,10 +127,13 @@ div.field, div.actions {
 }
 
 .box img{
-	
 	width:200px;
 	height: 200px;
 	border: 1px solid black;
 }
+
+
+
+
 
 
