@@ -5,8 +5,12 @@ class ApplicationController < ActionController::Base
   helper_method :get_boxes #gets current user's Boxes
   helper_method :get_username #Gets Username by current_id 
   helper_method :get_boxes_public #Gets all boxes which are marked public
+  helper_method :browser_tag #returns code relevent for browser link viewing. A convenience method.
   private
 
+  def browser_tag(url, imgsrc)
+   "<a href='url' class='tu_iframe_800x600'><img src='imgsrc'></a>"
+  end
 
   def get_boxes(user_id)
     @boxes = Box.find(:all, :conditions => ["user_id = ?", user_id])

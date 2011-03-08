@@ -1,0 +1,13 @@
+<div id="box_area">
+<% @boxes.each do |box| %>
+	
+	<div class="box">
+		<% if box.oftype = "image" %>
+			<%= link_to(image_tag(box.url), box.url, :class => "top_up", :toptions => "shaded = 1, overlayClose = 1")%>
+		
+		<% end %>
+		
+	
+	
+	</div>
+<% end %>

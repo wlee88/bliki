@@ -3,16 +3,8 @@
 <span id="title_text"><%= get_username(current_user.id).capitalize %>'s Boxes</span>
 <% end %>
 
-<div id="box_area">
-<% @boxes.each do |box| %>
-	
-	<div class="box">
-		<% if box.oftype = "image" %>
-			<img src="<%= box.url%>">
-		<% end %>
-	
-	</div>
-<% end %>	
+<%= render 'box_area' %>
+
 
 </div>
 <hr />

@@ -4,12 +4,18 @@ class User < ActiveRecord::Base
     attr_accessor :password
     before_save :encrypt_password
     
+    #by having assets folder we maintain all images and their integrity. Great if there are newer versions of this app
+    has_attached_file :photo, :url => "/assets/user/:id/:basename.:extension",
+    :path => ":rails_root/public/assets/products/:id/:basename.:extension"
     has_many :boxes
 
     validates_confirmation_of :password
     validates_presence_of :password, :on => :create
     validates_presence_of :username
     validates_uniqueness_of :username
+    
+    validates_attachment_size :photo, :less_than => 5.megabytes
+    validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
     def self.authenticate(username, password)
       user = find_by_username(username)

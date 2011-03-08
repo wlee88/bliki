@@ -2,35 +2,27 @@
 <% content_for :title do %>
 <span id="title_text">Public Boxes</span>
 <% end %>
-
-<div id="box_area">
-<% @boxes.each do |box| %>
-	
-	<div class="box">
-		<% if box.oftype = "image" %>
-			<img src="<%= box.url%>">
-		<% end %>
-	
-	</div>
-<% end %>	
-<div class="box">
-	<img src="/images/icons/chrome-icon.jpg">
-</div>
-
-<div class="box">
-	<img src="/images/icons/music-icon.jpg">
-</div>
-
-<div class="box">
-	<img src="/images/icons/pdf-icon.gif">
-</div>
-
+<% #box idea: google map%>
+<%= render 'box_area'%>
 <div class="box">
 	<img src="images/icons/pokeball-icon.jpg">
 </div>
 
 <div class="box">
-	<img src="/images/icons/chrome-icon.jpg">
+	<a href="http://www.youtube.com/watch?v=qqXi8WmQ_WM" rel="prettyPhoto" title="Flash 10 demo"><img src="/images/icons/youtube-icon.jpg"></a>
+</div>
+
+<div class="box">
+	<a href="http://www.google.nl" class="tu_iframe_800x600"><img src="/images/icons/pdf-icon.gif"></a>
+</div>
+
+<div class="box">
+		<a href="http://www.youtube.com/watch?v=rP-2ksWFk4o" rel="fancyvideo"><img src="/images/icons/youtube-icon.jpg"></a>
+</div>
+
+<div class="box">
+	<% browser_tag ("http://www.google.co.uk", "/images/icons/chrome-icon.jpg")%>
+	<a href="http://www.google.co.uk" class="tu_iframe_800x600"><img src="/images/icons/chrome-icon.jpg"></a>
 </div>
 
 <div class="box">
@@ -42,7 +34,9 @@
 </div>
 
 <div class="box">
-	<img src="images/icons/firefox-icon.jpg">
+		<a href="http://www.youtube.com/watch?v=koILIxzzfEM" class="tu_iframe_800x600"><img src="/images/icons/chrome-icon.jpg"></a>
+	             
+	            </a>
 </div>
 </div>
 <hr />
@@ -61,7 +55,7 @@
   <tr>
     <td><%= box.public %></td>
     <td><%= box.desc %></td>
-    <td><%= box.oftype %></td>
+    <td><%= box.oftype  %></td>
 	<td><%= get_username(box.owner) %></td>
     <td><%= link_to 'Show', box %></td>
     <td><%= link_to 'Edit', edit_box_path(box) %></td>

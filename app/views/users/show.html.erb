@@ -1,3 +1,9 @@
+<% content_for :title do %>
+<span id="title_text">Your Profile</span>
+<% end %>
+
+<%= image_tag @user.photo.url(:small) %>
+
 <p>
   <b>Username:</b>
   <%= @user.username.capitalize %>

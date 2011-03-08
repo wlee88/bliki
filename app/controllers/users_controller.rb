@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         puts params[:user]
         #format.html { redirect_to(@box, :notice => 'Box was successfully updated.') }
-        format.html {redirect_to boxes_path}
+        format.html { redirect_to(@user, :notice => 'Post was successfully updated.')}
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
