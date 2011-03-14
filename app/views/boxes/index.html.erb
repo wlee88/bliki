@@ -4,6 +4,8 @@
 <% end %>
 <% #box idea: google map%>
 <%= render 'box_area'%>
+
+
 <div class="box">
 		<a href="http://www.aj-wallace.co.uk/Home.php" class="tu_iframe_800x600"><img src="images/icons/andy-icon.jpg"></a>
 		</div>
@@ -41,6 +43,25 @@
 </div>
 </div>
 <hr />
+
+<div id="dragGreen" class="green box">drag</div>
+<%= draggable_element :dragGreen, :revert => true %>
+
+<div id="dragPink" class="pink box">drag</div>
+<%= draggable_element :dragPink, :revert => true %>
+
+
+	<div id="dropOnHover" class="pink box">drop</div>
+	<%= drop_receiving_element :dropOnHover, :hoverclass => "hover", 
+	      :onHover => "function(draggable, droppable, overlap){ 
+	         $('dropOnHover').update('you dragged ' + draggable.id + 
+	              ' over ' + droppable.id + ' by ' + overlap + 
+	              ' percent'); }" %>
+
+	<div id="dropOnDrop" class="pink box">drop</div>
+	<%= drop_receiving_element :dropOnDrop, :hoverclass => "hover",
+	    :onDrop => "function(drag, drop){ 
+	       alert('you dropped ' + drag.id + ' on ' + drop.id) }" %>
 <table>
   <tr>
     <th>Public</th>

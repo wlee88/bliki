@@ -2,6 +2,7 @@ class BoxesController < ApplicationController
   # GET /boxes
   # GET /boxes.xml
   
+  
   def me
     @boxes = Box.find(:all, :conditions => ["owner = ?", current_user.id])
     
