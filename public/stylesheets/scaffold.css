@@ -132,11 +132,30 @@ background-color: #FFA34D;
   list-style: square;
 }
 
-#box_area{
+#workspace{
+	width: 66%;
+	border: 1px solid black;
+	float: left;
+	border: 1px solid red;
+		
+}
 
-	margin-left:3em;
-	margin-right: 3em;
-	margin-bottom: 3em;
+.workspace_box{
+	background-color: white;
+	display: inline-block;
+	margin-left: 20px;
+	margin-top: 10px;
+	width: 30%;
+	height: 10em;
+	box-shadow: 10px 10px 20px black;
+	-moz-box-shadow: 0px 0px 5px black;
+	-webkit-box-shadow:0px 0px 20px black;
+}
+
+#my_box_area{
+	width: 30%;	
+	float:right;
+	border: 1px solid red;
 	
 }
 .box{

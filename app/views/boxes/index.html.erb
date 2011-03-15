@@ -3,65 +3,10 @@
 <span id="title_text">Public Boxes</span>
 <% end %>
 <% #box idea: google map%>
+<%= render 'workspace'%>
 <%= render 'box_area'%>
 
 
-<div class="box">
-		<a href="http://www.aj-wallace.co.uk/Home.php" class="tu_iframe_800x600"><img src="images/icons/andy-icon.jpg"></a>
-		</div>
-
-<div class="box">
-	<a href="http://www.youtube.com/watch?v=qqXi8WmQ_WM" rel="prettyPhoto" title="Flash 10 demo"><img src="/images/icons/youtube-icon.jpg"></a>
-</div>
-
-<div class="box">
-	<a href="http://www.google.co.uk" class="tu_iframe_800x600"><img src="/images/icons/pdf-icon.gif"></a>
-</div>
-
-<div class="box">
-		<a href="http://www.youtube.com/watch?v=rP-2ksWFk4o" rel="fancyvideo"><img src="/images/icons/youtube-icon.jpg"></a>
-</div>
-
-<div class="box">
-	<% browser_tag ("http://www.google.co.uk", "/images/icons/chrome-icon.jpg")%>
-	<a href="http://www.google.co.uk" class="tu_iframe_800x600"><img src="/images/icons/chrome-icon.jpg"></a>
-</div>
-
-<div class="box">
-	<a href="/images/icons/music-icon.jpg" class="top_up" toptions="shaded = 1, overlayClose = 1"><img src="/images/icons/music-icon.jpg"></a>
-</div>
-
-<div class="box">
-		<a href="/images/icons/pokeball-icon.jpg" class="top_up" toptions="shaded = 1, overlayClose = 1"><img src="images/icons/pokeball-icon.jpg"></a>
-	
-</div>
-
-<div class="box">
-		<a href="http://www.youtube.com/watch?v=koILIxzzfEM" class="tu_iframe_800x600"><img src="/images/icons/chrome-icon.jpg"></a>
-	             
-	            </a>
-</div>
-</div>
-<hr />
-
-<div id="dragGreen" class="green box">drag</div>
-<%= draggable_element :dragGreen, :revert => true %>
-
-<div id="dragPink" class="pink box">drag</div>
-<%= draggable_element :dragPink, :revert => true %>
-
-
-	<div id="dropOnHover" class="pink box">drop</div>
-	<%= drop_receiving_element :dropOnHover, :hoverclass => "hover", 
-	      :onHover => "function(draggable, droppable, overlap){ 
-	         $('dropOnHover').update('you dragged ' + draggable.id + 
-	              ' over ' + droppable.id + ' by ' + overlap + 
-	              ' percent'); }" %>
-
-	<div id="dropOnDrop" class="pink box">drop</div>
-	<%= drop_receiving_element :dropOnDrop, :hoverclass => "hover",
-	    :onDrop => "function(drag, drop){ 
-	       alert('you dropped ' + drag.id + ' on ' + drop.id) }" %>
 <table>
   <tr>
     <th>Public</th>
