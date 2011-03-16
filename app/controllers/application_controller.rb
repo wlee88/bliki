@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   helper_method :browser_tag #returns code relevent for browser link viewing. A convenience method.
   private
 
+ 
+  
   def browser_tag(url, imgsrc)
    "<a href='url' class='tu_iframe_800x600'><img src='imgsrc'></a>"
   end

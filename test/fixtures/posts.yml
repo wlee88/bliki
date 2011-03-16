@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  description: MyString
+  row: 1
+  order: 
+  box: 
+  user: 
+
+two:
+  title: MyString
+  description: MyString
+  row: 1
+  order: 
+  box: 
+  user: 

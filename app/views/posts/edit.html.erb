@@ -1,0 +1,12 @@
+<% content_for :title do %>
+<span id="title_text">Edit Box</span>
+<% end %>
+
+<%# render 'form' %>
+
+<%= render 'workspace' %>
+
+<%= render 'boxes/box_area'%>
+
+<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  post: 
+  box: 
+  order: 1
+
+two:
+  post: 
+  box: 
+  order: 1

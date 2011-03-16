@@ -1,0 +1,20 @@
+<div id="workspace">
+	
+	<% 3.times do |k| %>
+	
+	<div id="dropbox number <%= k.to_s%>" class="workspace_box">drop</div>
+	<%= drop_receiving_element "dropbox number " + k.to_s, :hoverclass => "hover",
+	    :onDrop => "function(drag, drop){ 
+	       alert('you dropped ' + drag.id + ' on ' + drop.id) }" %>
+	
+	<% end %>
+	
+	<div id="dropOnHover" class="pink box">drop</div>
+	<%= drop_receiving_element :dropOnHover, :hoverclass => "hover", 
+	      :onHover => "function(draggable, droppable, overlap){ 
+	         $('dropOnHover').update('you dragged ' + draggable.id + 
+	              ' over ' + droppable.id + ' by ' + overlap + 
+	              ' percent');" %>
+
+</div>
+

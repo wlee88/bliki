@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     has_attached_file :photo, :url => "/assets/user/:id/:basename.:extension",
     :path => ":rails_root/public/assets/products/:id/:basename.:extension"
     has_many :boxes
+    has_many :posts
 
     validates_confirmation_of :password
     validates_presence_of :password, :on => :create

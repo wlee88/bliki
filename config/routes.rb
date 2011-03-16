@@ -1,5 +1,9 @@
 Blox::Application.routes.draw do
 
+  resources :pages
+
+  resources :posts
+
   get "sessions/new"
   
   get "users/new"

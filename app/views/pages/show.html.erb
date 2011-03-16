@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Post:</b>
+  <%= @page.post %>
+</p>
+
+<p>
+  <b>Box:</b>
+  <%= @page.box %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @page.order %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>

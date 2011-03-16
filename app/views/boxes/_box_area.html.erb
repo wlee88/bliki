@@ -1,11 +1,11 @@
 <div id="my_box_area">
 <% @boxes.each do |box| %>
 	
-	<div id="<%= box.id.to_s %>" class="box">
+	<div id="item no: <%= box.id.to_s %>" class="box">
 			<% #link_to(image_tag(box.url), box.url, :class => "top_up", :toptions => "shaded = 1, overlayClose = 1")%>
 			<%# link_to(image_tag(box.url)) %>
 			<img src="<%= box.url %>" />
-		<%= draggable_element ( box.id.to_s , :revert => true )%>
+		<%= draggable_element ( "item no: " + box.id.to_s , :revert => true )%>
 		
 	
 	</div>

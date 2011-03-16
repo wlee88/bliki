@@ -1,0 +1,22 @@
+<%= form.fields_for :boxes do |box_form| %>
+  
+  <div class="field">
+    <%= box_form.label :public %><br />
+    <%= f.check_box :public %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br />
+    <%= f.text_field :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :oftype %><br />
+    <%= f.text_field :oftype %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
