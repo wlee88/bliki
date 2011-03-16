@@ -9,6 +9,7 @@ class CreatingPosts < ActiveRecord::Migration
       t.references :user
 
       t.timestamps
+    end
   end
 
   def self.down

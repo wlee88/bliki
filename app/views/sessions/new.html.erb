@@ -1,6 +1,8 @@
 <% content_for :title do %>
 <span id="title_text">Log In</span>
 <% end %>
+
+note: you can use test user: test_user || password:hello to log in
 <%= form_tag sessions_path do %>
   <p>
     <%= label_tag :username %><br />
