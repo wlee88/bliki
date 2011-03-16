@@ -18,7 +18,7 @@
 			<%= yield :title %>
 			<li><%= link_to "Home", "/home/index" %>
 			<li><%= link_to "My Pieces", "/boxes/me" %>
-			<li><%= link_to "My Boxes", posts_path %>
+			<li><%= link_to "My Boxes", "/posts/new" %>
 			<li><%= link_to "Public Boxes", ""%>
 			<li>	<% if current_user %>
 				    <%= link_to "Log out", log_out_path %>
