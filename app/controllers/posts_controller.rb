@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = Post.new
-    @boxes = Box.find(:all)
+    @boxes = Box.all
 
     respond_to do |format|
       format.html # new.html.erb

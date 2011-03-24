@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
     #by having assets folder we maintain all images and their integrity. Great if there are newer versions of this app
     has_attached_file :photo, :url => "/assets/user/:id/:basename.:extension",
     :path => ":rails_root/public/assets/products/:id/:basename.:extension"
+    
+    has_many :comments
     has_many :boxes
     has_many :posts
 
