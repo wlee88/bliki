@@ -141,11 +141,10 @@ background-color: #FFA34D;
 }
 
 .workspace_box{
-	background-color: white;
 	display: inline-block;
 	margin-left: 20px;
-	margin-top: 10px;
-	width: 30%;
+	margin-top: 30px;
+	width: 700px;
 	height: 10em;
 	box-shadow: 10px 10px 20px black;
 	-moz-box-shadow: 0px 0px 5px black;
@@ -218,7 +217,9 @@ form.inline p {margin-bottom:0;}
 .success a {color:#264409;}
 .info a {color:#205791;}
 
-
+draggable_area{
+	width: 300px;
+}
 
 
 
