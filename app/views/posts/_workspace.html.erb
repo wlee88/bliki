@@ -1,23 +1,19 @@
 <div id="workspace">
 	
-
+<ul>
 	
-	<div id="dropno1" class="workspace_box">drop</div>
-	<%= drop_receiving_element "dropno" + "1" , :hoverclass => "hover",
-	    :onDrop => "function(drag, drop){ 
-	       alert('you dropped ' + drag.id + ' on ' + drop.id) }" %>
-		<div id="dropno2" class="workspace_box">drop</div>
-		<%= drop_receiving_element "dropno" + "2" , :hoverclass => "hover",
-		    :onDrop => "function(drag, drop){ 
-		       alert('you dropped ' + drag.id + ' on ' + drop.id) }" %>
+	<div id="dropboxnumber1" class="workspace_box">drop</div>
+	<%= drop_receiving_element ("dropboxnumber" + "1", :hoverclass => "hover", :url => root_path(:box => "1")) %>
 	
-
+	<div id="dropboxnumber2" class="workspace_box">drop</div>
+	<%= drop_receiving_element ("dropboxnumber" + "2", :hoverclass => "hover",:url => root_path(:box => "2")) %>
+	
 	<div id="dropOnHover">drop</div>
 	<%= drop_receiving_element :dropOnHover, :hoverclass => "hover", 
 	      :onHover => "function(draggable, droppable, overlap){ 
 	         $('dropOnHover').update('you dragged ' + draggable.id + 
 	              ' over ' + droppable.id + ' by ' + overlap + 
-	              ' percent');" %>
+	              ' percent');", :action => "index" %>
 
-</div>
+			</div>
 

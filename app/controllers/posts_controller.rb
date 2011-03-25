@@ -87,4 +87,8 @@ class PostsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def store
+    puts params
+  end
 end
