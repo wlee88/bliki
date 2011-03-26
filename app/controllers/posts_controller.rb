@@ -89,6 +89,8 @@ class PostsController < ApplicationController
   end
   
   def store
-    puts params
+    @post = Post.find(params[:id])
+    @boxes = @post.boxes.create(params[:boxes])
+    
   end
 end
