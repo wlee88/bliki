@@ -3,35 +3,10 @@
 <span id="title_text"><%= get_username(current_user.id).capitalize %>'s Boxes</span>
 <% end %>
 
-<%= render 'box_area' %>
+<%= create_button %>
 
-
+<%= render 'box_collection' %>
 </div>
-<hr />
-<table>
-  <tr>
-    <th>Public</th>
-    <th>Desc</th>
-    <th>Oftype</th>
-	<th>Owner</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @boxes.each do |box| %>
-  <tr>
-    <td><%= box.public %></td>
-    <td><%= box.desc %></td>
-    <td><%= box.oftype %></td>
-	<td><%= get_username(box.owner) %></td>
-    <td><%= link_to 'Show', box %></td>
-    <td><%= link_to 'Edit', edit_box_path(box) %></td>
-    <td><%= link_to 'Destroy', box, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />
 
-<%= link_to 'New Box', new_box_path %>

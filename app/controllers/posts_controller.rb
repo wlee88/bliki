@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   
-  skip_before_filter :verify_authenticity_token  
   
   #Box.find(:all, :conditions => ["owner = ?", current_user.id])
   
@@ -29,7 +28,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    @post = Post.new
+    @post = Post.create
     @boxes = Box.all
 
     respond_to do |format|
@@ -41,7 +40,13 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
-    @boxes = Box.find(:all)
+    @boxes = Box.limit(5)
+    respond_to do |format|
+        format.html #render normal view when a normal full page rewuest is done
+        format.js #use the RJS template (see below) when AJAX is used
+      end
+    
+    
   end
 
   # POST /posts
@@ -89,8 +94,13 @@ class PostsController < ApplicationController
   end
   
   def store
-    @post = Post.find(params[:id])
-    @boxes = @post.boxes.create(params[:boxes])
-    
+    @post = Post.find(params[:post_id])
+     @box = @post.boxes.create(params[:id])
+    render :update do |page|
+     # page.call 'alert', 'My message!'
+     page.replace_html "workspace", :partial => 'workspace'
+    end
   end
+  
+  
 end

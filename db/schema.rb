@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110321151637) do
+ActiveRecord::Schema.define(:version => 20110326223430) do
 
   create_table "boxes", :force => true do |t|
     t.boolean  "public"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20110321151637) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "boxes_posts", :id => false, :force => true do |t|
+    t.integer "box_id"
+    t.integer "post_id"
   end
 
   create_table "comments", :force => true do |t|

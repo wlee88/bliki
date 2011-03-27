@@ -1,4 +1,4 @@
-<div id="my_box_area">
+<div id="my_box_collection">
 <% @boxes.each do |box| %>
 	
 	<div id="<%= box.id.to_s %>" class="box" >
@@ -8,9 +8,13 @@
 			<%# link_to(image_tag(box.url)) %>
 			<img src="<%= box.image.url %>" />
 		<%= draggable_element ( box.id.to_s , :revert => true )%>
-
+	<div class="box_links">
+		<ul>
+			<li><%= link_to "Edit", edit_box_path(box)%></li>
+			<li><%= link_to "Delete", box, :method => :delete %></li>
+		</ul>
 	</div>
-
+	</div>
 
 <% end %>
 

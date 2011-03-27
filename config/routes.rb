@@ -3,6 +3,9 @@ Blox::Application.routes.draw do
   resources :pages
 
   resources :posts
+  
+  match "/posts/store" => "posts#store", :as => "store_posts"
+  
 
   get "sessions/new"
   

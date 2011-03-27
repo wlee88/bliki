@@ -1,19 +1,9 @@
-<div id="workspace">
-	
-<ul>
-	
+
+	<% @post.boxes.each do |box| %>
+		box here!<%# image_tag box.image.url, :class => :workspace_box%>
+	<% end %>
 	<div id="dropboxnumber1" class="workspace_box">drop</div>
-	<%= drop_receiving_element ("dropboxnumber" + "1", :hoverclass => "hover", :url => root_path(:box => "1")) %>
-	
-	<div id="dropboxnumber2" class="workspace_box">drop</div>
-	<%= drop_receiving_element ("dropboxnumber" + "2", :hoverclass => "hover",:url => root_path(:box => "2")) %>
-	
-	<div id="dropOnHover">drop</div>
-	<%= drop_receiving_element :dropOnHover, :hoverclass => "hover", 
-	      :onHover => "function(draggable, droppable, overlap){ 
-	         $('dropOnHover').update('you dragged ' + draggable.id + 
-	              ' over ' + droppable.id + ' by ' + overlap + 
-	              ' percent');", :action => "index" %>
+	<%= drop_receiving_element ("dropboxnumber" + "1", :hoverclass => "hover", :url => { :controller => "posts", :action => "store", :post_id => @post.id} )%>
 
-			</div>
 
+	

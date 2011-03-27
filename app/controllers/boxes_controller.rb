@@ -2,6 +2,8 @@ class BoxesController < ApplicationController
   # GET /boxes
   # GET /boxes.xml
   
+  skip_before_filter :verify_authenticity_token
+  
   
   def me
     @boxes = Box.find(:all, :conditions => ["owner = ?", current_user.id])

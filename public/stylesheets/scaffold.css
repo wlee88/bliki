@@ -14,14 +14,18 @@ body, p, ol, ul, td {
 }
 
 pre {
-  background-color: #eee;
+  /*background-color: #eee;
   padding: 10px;
-  font-size: 11px;
+  font-size: 11px;*/
+}
+
+pre {
+	margin: 0; padding: 0; font-family: "Helvetica Neue";
 }
 
 a { color: white; }
 a:visited { color: white; }
-a:hover { color: #fff; background-color:#000; }
+/*a:hover { color: #fff; background-color:#000; }*/
 
 div.field, div.actions {
   margin-bottom: 10px;
@@ -148,9 +152,11 @@ background-color: #FFA34D;
 
 .workspace_box{
 	display: inline-block;
+	margin-left: 150px;
 	margin-top: 30px;
-	width: 700px;
-	height: 10em;
+	width: 450px;
+	height: 300px;
+	padding: 0;
 	box-shadow: 10px 10px 20px black;
 	-moz-box-shadow: 0px 0px 5px black;
 	-webkit-box-shadow:0px 0px 20px black;
@@ -163,8 +169,15 @@ background-color: #FFA34D;
 	margin-top: 45px;
 	
 }
+
+#my_box_collection{
+	float:left;
+	/*border: 1px solid red;*/
+	margin-top: 120px;
+	
+}
+
 .box{
-	background-color: white;
 	display: inline-block;
 	margin: 1px 1px 1px 1px;
 	width: 125px;
@@ -173,6 +186,36 @@ background-color: #FFA34D;
 	box-shadow: 10px 10px 20px black;
 	-moz-box-shadow: 0px 0px 5px black;
 	-webkit-box-shadow:0px 0px 20px black;
+}
+.box_links
+{
+	background-color:black;
+}
+
+.box a{
+	text-decoration:none;
+	color: white;
+	text-align: center;
+	background-color:black;
+}
+
+.box li
+{
+	box-shadow: 10px 10px 20px blue;
+	-moz-box-shadow: 0px 0px 5px blue;
+	-webkit-box-shadow:0px 0px 20px blue;
+}
+
+.box_links li a:hover{
+	text-decoration:none;
+	color: white;
+	box-shadow: 10px 10px 20px red;
+	-moz-box-shadow: 0px 0px 5px red;
+	-webkit-box-shadow:0px 0px 20px red;
+}
+.box a:hover{
+
+
 }
 
 .box img{
@@ -222,6 +265,41 @@ form.inline p {margin-bottom:0;}
 .notice a {color:#514721;}
 .success a {color:#264409;}
 .info a {color:#205791;}
+
+div#qTip {
+padding: 3px;
+border: 1px solid #666;
+display: none;
+background: #999;
+color: #FFF;
+font: bold 9px Verdana, Arial, Helvetica, sans-serif;
+position: absolute;
+z-index: 1000;
+}
+
+.mega_button
+{
+	margin-left: 280px;
+	padding-left:260px;
+	padding-right: 260px;
+	padding-top:20px;
+	padding-bottom:20px;
+	border-radius: 15px;
+	text-decoration: none;
+	background-color: black;
+	box-shadow: 10px 10px 5px red;
+	-moz-box-shadow: 0px 0px 5px red;
+	-webkit-box-shadow:0px 0px 20px red;
+}
+
+a:hover.mega_button
+{
+	box-shadow: 10px 10px 5px yellow;
+	-moz-box-shadow: 0px 0px 5px yellow;
+	-webkit-box-shadow:0px 0px 20px yellow;
+}
+
+
 
 
 

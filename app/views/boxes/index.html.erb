@@ -2,11 +2,8 @@
 <% content_for :title do %>
 <span id="title_text">Public Boxes</span>
 <% end %>
-<% #box idea: google map%>
-<%= render 'workspace'%>
+
 <%= render 'box_area'%>
-
-
 <table>
   <tr>
     <th>Public</th>
@@ -26,7 +23,7 @@
 	<td><%= get_username(box.owner) %></td>
     <td><%= link_to 'Show', box %></td>
     <td><%= link_to 'Edit', edit_box_path(box) %></td>
-    <td><%= link_to 'Destroy', box, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', box, :method => :delete %></td>
   </tr>
 <% end %>
 </table>
