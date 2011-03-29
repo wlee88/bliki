@@ -1,9 +1,32 @@
+	<div id="post_title_text">Title: <%= in_place_editor_field :post, :title, {}, :cols => 80, :rows => 1, :saving_text => "Saving..." %></div>
+	
+		<div id="post_tags_text">
+			<% @post.tags.each do |tag| %>
+			<% tag.name += "," %>
+			<% end %>
+		Tags: <%= in_place_editor_field :post, :tags, {}, :cols => 80, :rows => 1, :saving_text => "Saving..." %></div>
 
 	<% @post.boxes.each do |box| %>
-		box here!<%# image_tag box.image.url, :class => :workspace_box%>
-	<% end %>
-	<div id="dropboxnumber1" class="workspace_box">drop</div>
-	<%= drop_receiving_element ("dropboxnumber" + "1", :hoverclass => "hover", :url => { :controller => "posts", :action => "store", :post_id => @post.id} )%>
-
-
+	<% if box.oftype == "image"%>
+		<%= link_to image_tag (box.image.url, :class => :workspace_box), say_hi_path(:destroy_post_id => @post.id, :destroy_box_id => box.id), :confirm => " Delete: Are you sure?", :remote => true%>
 	
+	<% elsif box.oftype == "text" %>
+		<% @box = box %>
+		<% if @box.desc. == ""%>
+		<% @box.desc= "[click to edit]"%>
+		<% end %>
+		<div class="workspace_text" id="workspace_text_<%= box.id.to_s%>">
+
+		<%= link_to "delete text", say_hi_path(:destroy_post_id => @post.id, :destroy_box_id => box.id), :remote => true%>
+		<div id="inplaceedit_<%= box.id.to_s%>" class ="inplaceedit">
+		<%= in_place_editor_field :box, :desc, {}, :cols => 21, :rows => 2%>
+		</div>
+
+		</div>
+	<% end %>	
+	<% end %>
+		<div id="dropbox" class="dropbox_box">Drag Content here</div>
+		<%= drop_receiving_element ("dropbox", :hoverclass => "hover", :url => { :controller => "posts", :action => "store", :post_id => @post.id} )%>
+
+</div>
+

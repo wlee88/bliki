@@ -4,5 +4,6 @@ class Box < ActiveRecord::Base
   belongs_to :user
   has_attached_file :image
 
-  
+  acts_as_taggable
+
 end

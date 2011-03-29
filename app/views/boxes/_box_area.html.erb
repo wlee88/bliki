@@ -1,18 +1,27 @@
+
 <div id="my_box_area">
+	<%= will_paginate @boxes, :class => 'pagination ajax' %>
+	<div class="box" id = "textbox">
+		<%= draggable_element ( "textbox" , :revert => true )%>
+	</div>
+
 <% @boxes.each do |box| %>
-	
+		
 	<div id="<%= box.id.to_s %>" class="box" >
 		
-		
+	
 			<% #link_to(image_tag(box.url), box.url, :class => "top_up", :toptions => "shaded = 1, overlayClose = 1")%>
 			<%# link_to(image_tag(box.url)) %>
 			<img src="<%= box.image.url %>" />
 		<%= draggable_element ( box.id.to_s , :revert => true )%>
+		
+	
 
 	</div>
 
 
 <% end %>
+	
 
 </div>
 

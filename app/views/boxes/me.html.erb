@@ -1,12 +1,11 @@
-
 <% content_for :title do %>
-<span id="title_text"><%= get_username(current_user.id).capitalize %>'s Boxes</span>
+<span id="title_text"><%= get_username(current_user.id).capitalize %>'s Items</span>
 <% end %>
 
 <%= create_button %>
 
-<%= render 'box_collection' %>
 </div>
-
+<%= render 'form'%>
+<%= render 'box_collection' %>
 
 

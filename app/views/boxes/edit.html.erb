@@ -1,6 +1,6 @@
-<h1>Editing box</h1>
-
+<% content_for :title do %>
+<span id="title_text">Edit Item</span>
+<% end %>
+<div id="workspace">
 <%= render 'form' %>
-
-<%= link_to 'Show', @box %> |
-<%= link_to 'Back', "/boxes/me" %>
+</div>

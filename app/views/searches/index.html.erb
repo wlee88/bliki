@@ -1,0 +1,25 @@
+<% content_for :title do %>
+<span id="title_text">		<span id="username_text">Logged in as <%= current_user.username.capitalize %></span></span>
+<% end %>
+</div>
+<div id="container">
+	
+	<% if params[:search] %>
+		<%= search_titlify("Tags matching: " + params[:search])%>
+		<%= link_to "Back to Tags", searches_path, :class => :mega_button%>
+		<% @posts.each do |post| %>
+		<div id="search_canvas">
+			<%= image_tag (post.boxes.first.image.url, :class => :box) %>
+		<% end %>
+	<% else %>
+		<%= search_titlify("Tag Cloud :D")%>
+		<div id="search_canvas_main">
+		<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+			<% if tag.name != no_tag_text%>
+	  			<%= link_to tag.name, searches_path(:search => tag.name), :class => css_class %>
+			<% end%>		
+		<% end %>
+		</div>
+	<% end%>
+
+</div>

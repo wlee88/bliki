@@ -1,24 +1,28 @@
 Blox::Application.routes.draw do
 
   resources :pages
-
   resources :posts
-  
   match "/posts/store" => "posts#store", :as => "store_posts"
-  
-
+  match "/posts/save_desc" => "posts#set_post_description", :as => "save_description_post"
+  match "/posts/save_title" => "posts#set_post_title", :as => "save_description_title"
+  match "/posts/save_tags" => "posts#set_post_tags", :as => "save_post_tags"
+  match "/posts/save_box_desc" => "posts#set_box_desc", :as => "save_boxes_desc"
+  match "/posts/say_hi" => "posts#say_hi", :as => "say_hi"
+  match "boxes/set_box_tags" => "boxes#set_box_tags", :as => "save_boxes_tag"
+  match "boxes/set_box_desc" => "boxes#set_box_desc"
   get "sessions/new"
   
   get "users/new"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
-  root :to => "home#index"
+  root :to => "searches#index"
   
-  get "boxes/me"
+  get "boxes/me" => "boxes#me", :as => "my_boxes"
   
   resources :users
   resources :sessions
+  resources :searches
   
   resources :boxes do
     resources :comments

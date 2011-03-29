@@ -1,23 +1,15 @@
 <div id="my_box_collection">
+		<div id="paginate"><%= will_paginate @boxes%></div>
 <% @boxes.each do |box| %>
-	
-	<div id="<%= box.id.to_s %>" class="box" >
-		
-		
+
+<div id="<%= box.id.to_s %>" class="mybox" >
+		<span class="box_options"><%= link_to "Delete", box_path(box), :method => "delete"%></span>
 			<% #link_to(image_tag(box.url), box.url, :class => "top_up", :toptions => "shaded = 1, overlayClose = 1")%>
 			<%# link_to(image_tag(box.url)) %>
-			<img src="<%= box.image.url %>" />
-		<%= draggable_element ( box.id.to_s , :revert => true )%>
-	<div class="box_links">
-		<ul>
-			<li><%= link_to "Edit", edit_box_path(box)%></li>
-			<li><%= link_to "Delete", box, :method => :delete %></li>
-		</ul>
+			<%= link_to image_tag (box.image.url), edit_box_path(box)%>
 	</div>
-	</div>
-
+	
 <% end %>
 
 </div>
-
 	

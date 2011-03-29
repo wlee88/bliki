@@ -8,7 +8,20 @@ class ApplicationController < ActionController::Base
   helper_method :browser_tag #returns code relevent for browser link viewing. A convenience method.
   helper :all
   private
+  
 
+  def no_tag_text
+    "None Defined:(. Click to Edit"
+  end
+  
+  def no_title_text
+    "No Title Defined :(. Click To Edit)"
+  end
+  
+  def get_date_today
+    t1 = Time.now.localtime
+    t1.day.to_s + "/" + t1.month.to_s + "/" + t1.year.to_s
+      end
  
   
   def browser_tag(url, imgsrc)
