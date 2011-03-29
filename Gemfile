@@ -10,6 +10,7 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git"
 gem 'will_paginate'
 gem 'acts-as-taggable-on'
+gem 'in_place_editing'
 
 # Use unicorn as the web server
 # gem 'unicorn'
