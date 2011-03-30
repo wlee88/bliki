@@ -23,7 +23,6 @@ pre {
 	margin: 0; padding: 0; font-family: "Helvetica Neue";
 }
 
-a { color: white; }
 a:visited { color: white; }
 /*a:hover { color: #fff; background-color:#000; }*/
 
@@ -475,6 +474,7 @@ a:hover.mega_button
 	box-shadow: 10px 10px 20px black;
 	-moz-box-shadow: 0px 0px 5px black;
 	-webkit-box-shadow:0px 0px 20px black;
+
 }
 #search_canvas_main
 {
@@ -488,11 +488,17 @@ a:hover.mega_button
 	box-shadow: 10px 10px 20px black;
 	-moz-box-shadow: 0px 0px 5px black;
 	-webkit-box-shadow:0px 0px 20px black;
+	-webkit-border-top-left-radius: 30px;
+	-webkit-border-top-right-radius: 30px;
+	-moz-border-radius-topleft: 30px;
+	-moz-border-radius-topright: 30px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
 }
-.css1 { font-size: 1.0em; color: black;}
-  .css2 { font-size: 1.2em; color: #FF8500;}
-  .css3 { font-size: 1.4em; color: green;}
-  .css4 { font-size: 1.6em; color: yellow;}
+a.css1 { font-size: 1.0em; color: black; text-decoration: none;}
+a.css2 { font-size: 1.2em; color: #FF8500; text-decoration: none;}
+a.css3 { font-size: 1.4em; color: green; text-decoration: none;}
+a.css4 { font-size: 1.6em; color: yellow; text-decoration: none;}
 
 #search_title
 {
