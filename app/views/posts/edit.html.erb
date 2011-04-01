@@ -9,5 +9,10 @@
 <%= render 'workspace' %>
 </div>
 
+<div id="sort_box">
+	Sort By:
 
+<% @options = {:latest => 'latest' , :images => 'images', :text => 'text', :music =>'music'} %>
+<%= select_tag 'sort[]', options_for_select(@options), :include_blank => true,:onchange => remote_function(:url => {:controller => 'boxes', :action => :update_sort_box}, :with => "'sort='+this.value", :update => "div_containing_list") %>
+</div>
 <%= render 'boxes/box_area'%>

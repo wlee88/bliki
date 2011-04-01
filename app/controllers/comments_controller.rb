@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+   before_filter :authenticate
   def create
       @box = Box.find(params[:box_id])
       @comment = @box.comments.create(params[:comment])

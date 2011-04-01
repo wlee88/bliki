@@ -10,6 +10,7 @@ Blox::Application.routes.draw do
   match "/posts/say_hi" => "posts#say_hi", :as => "say_hi"
   match "boxes/set_box_tags" => "boxes#set_box_tags", :as => "save_boxes_tag"
   match "boxes/set_box_desc" => "boxes#set_box_desc"
+  match "boxes/update_sort_box" => "boxes#update_sort_box", :as => "update_sort_box"
   get "sessions/new"
   
   get "users/new"

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+   before_filter :authenticate
   in_place_edit_for :post, :title 
   in_place_edit_for :post, :tag
   #Box.find(:all, :conditions => ["owner = ?", current_user.id])
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
     @box.save
     render :update do |page|
-    page.replace_html "inplaceedit_" + params[:id], in_place_editor_field (:box, :desc, {}, :cols => 21, :rows => 2)
+    page.replace_html "inplaceedit_" + params[:id], "<div class='inplaceedit'>" + in_place_editor_field (:box, :desc, {}, :cols => 21, :rows => 2) + "</div>"
     end
   end
   

@@ -18,7 +18,7 @@
 		<div class="workspace_text" id="workspace_text_<%= box.id.to_s%>">
 
 		<%= link_to "delete text", say_hi_path(:destroy_post_id => @post.id, :destroy_box_id => box.id), :remote => true%>
-		<div id="inplaceedit_<%= box.id.to_s%>" class ="inplaceedit">
+		<div id="inplaceedit_<%= box.id.to_s%>">
 		<%= in_place_editor_field :box, :desc, {}, :cols => 21, :rows => 2%>
 		</div>
 

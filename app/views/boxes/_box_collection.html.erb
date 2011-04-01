@@ -1,15 +1,14 @@
-<div id="my_box_collection">
+
+
+
+
+
 		<div id="paginate"><%= will_paginate @boxes%></div>
 <% @boxes.each do |box| %>
-
 <div id="<%= box.id.to_s %>" class="mybox" >
 		<span class="box_options"><%= link_to "Delete", box_path(box), :method => "delete"%></span>
 			<% #link_to(image_tag(box.url), box.url, :class => "top_up", :toptions => "shaded = 1, overlayClose = 1")%>
 			<%# link_to(image_tag(box.url)) %>
 			<%= link_to image_tag (box.image.url), edit_box_path(box)%>
 	</div>
-	
 <% end %>
-
-</div>
-	

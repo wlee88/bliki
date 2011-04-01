@@ -1,3 +1,48 @@
-<% form_tag my_boxes_path do %>
-	
+<%= form_for @box,:html => { :multipart => true } do |f| %>
+  <% if @box.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@box.errors.count, "error") %> prohibited this box from being saved:</h2>
+
+      <ul>
+      <% @box.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form_field">
+    <%= f.label :public %><br />
+    <%= f.check_box :public %>
+</div>
+<div class="form_field">
+	<%= f.label :desc %><br />
+	<%= f.text_field :desc%>
+</div>
+	<div class="form_field">
+	<% if @box.image.url != "/images/original/missing.png"%>
+	<%= image_tag @box.image.url, :class => :box%>
+	<% end %>
+	</div>
+
+	<div class="form_field">
+    <%= f.label :oftype %><br />
+    <%= f.text_field :oftype %>
+  </div>
+  <div class="form_field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="form_field">
+	Upload an Image!: <%= f.file_field :image %>
+  </div>
+<div class="form_field">
+		<% @box.tags.each do |tag| %>
+		<% tag.name += "," %>
+		<% end %>
+	Tags: <%= in_place_editor_field :box, :tags, {}, :cols => 80, :rows => 1, :saving_text => "Saving..." %>
+</div>
+  <div class="form_field form_submit">
+    <%= f.submit %>
+  </div>
 <% end %>

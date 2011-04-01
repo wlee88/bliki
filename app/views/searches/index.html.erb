@@ -9,12 +9,15 @@
 		<%= link_to "Back to Tags", searches_path, :class => :mega_button%>
 		<% @posts.each do |post| %>
 		<div id="search_canvas">
+			<% #this shows an error if empty %>
 			<%= image_tag (post.boxes.first.image.url, :class => :box) %>
+		</div>
 		<% end %>
 	<% else %>
-		<%= search_titlify("Tag Cloud :D")%>
+		<%= search_titlify("Tag Cloud")%>
 		<div id="search_canvas_main">
 		<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+		<% #remove the default no_tag_text %>
 			<% if tag.name != no_tag_text%>
 	  			<%= link_to tag.name, searches_path(:search => tag.name), :class => css_class %>
 			<% end%>		

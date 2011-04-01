@@ -23,6 +23,8 @@ pre {
 	margin: 0; padding: 0; font-family: "Helvetica Neue";
 }
 
+a { color:white;}
+
 a:visited { color: white; }
 /*a:hover { color: #fff; background-color:#000; }*/
 
@@ -48,7 +50,7 @@ div.field, div.actions {
 	-webkit-box-shadow:0px 0px 20px black;
 	border-radius: 15px;
 	margin-right:0;
-	margin-bottom:20px;
+	margin-bottom:60px;
 }
 #user_nav{
   padding:0; margin-top: 15px; margin-bottom: 15px;
@@ -153,7 +155,7 @@ text-align: center;
 
 #workspace{
 	margin-top: 45px;
-	margin-left: 40px;
+	margin-left: 30px;
 	width: 850px;
 	border: 1px solid black;
 	box-shadow: 10px 10px 5px black;
@@ -240,7 +242,7 @@ text-align: center;
 #my_box_collection{
 	float:left;
 	/*border: 1px solid red;*/
-	margin-top: 90px;
+	margin-left: 30px;
 
 	
 }
@@ -337,9 +339,9 @@ text-align: center;
 }
 
 .hover{
-	box-shadow: 0px 0px 20px yellow;
-	-moz-box-shadow: 0px 0px 20px yellow;
-	-webkit-box-shadow:0px 0px 20px yellow;
+	box-shadow: 0px 0px 20px blue;
+	-moz-box-shadow: 0px 0px 20px blue;
+	-webkit-box-shadow:0px 0px 20px blue;
 }
 
 /* forms.css */
@@ -393,6 +395,39 @@ z-index: 1000;
 	-moz-box-shadow: 0px 0px 5px red;
 	-webkit-box-shadow:0px 0px 20px red;
 }
+
+#sort_box
+{
+	display :inline-block;
+	color: yellow;
+	position: absolute;
+	padding-bottom: 2px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top:2px;
+	top: 150px;
+	left: 1075px;
+	text-decoration: none;
+	background-color: black;
+	border-radius:30px;
+}
+
+#sort_box_post
+{
+	display :inline-block;
+	color: yellow;
+	position: absolute;
+	padding-bottom: 2px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top:2px;
+	top: 150px;
+	left: 1040px;
+	text-decoration: none;
+	background-color: black;
+	border-radius:30px;
+}
+
 
 a:hover.mega_button
 {
@@ -484,7 +519,7 @@ a:hover.mega_button
 	margin-bottom: 100px;
 	padding-top:80px;
 	height: 100px;
-	background-color: #FF2C00;
+	background-color: #6996D3;
 	box-shadow: 10px 10px 20px black;
 	-moz-box-shadow: 0px 0px 5px black;
 	-webkit-box-shadow:0px 0px 20px black;
@@ -495,10 +530,10 @@ a:hover.mega_button
 	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
 }
-a.css1 { font-size: 1.0em; color: black; text-decoration: none;}
-a.css2 { font-size: 1.2em; color: #FF8500; text-decoration: none;}
-a.css3 { font-size: 1.4em; color: green; text-decoration: none;}
-a.css4 { font-size: 1.6em; color: yellow; text-decoration: none;}
+a.css1 { font-size: 1.0em; color: #0F4FA8; text-decoration: none;}
+a.css2 { font-size: 1.2em; color: #2C17B1; text-decoration: none;}
+a.css3 { font-size: 1.4em; color: #00A480; text-decoration: none;}
+a.css4 { font-size: 1.6em; color: #FF9F00; text-decoration: none;}
 
 #search_title
 {
@@ -525,8 +560,9 @@ a.css4 { font-size: 1.6em; color: yellow; text-decoration: none;}
 		font-size:20px;
 		color: yellow;
 		text-shadow: 1px 1px 1px black;
-
 }
+
+
 
 
 

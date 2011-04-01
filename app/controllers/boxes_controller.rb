@@ -2,6 +2,7 @@ class BoxesController < ApplicationController
   # GET /boxes
   # GET /boxes.xml
   
+   before_filter :authenticate
   skip_before_filter :verify_authenticity_token
   in_place_edit_for :box, :tag
   in_place_edit_for :box, :desc
@@ -68,11 +69,20 @@ class BoxesController < ApplicationController
   # GET /boxes/new
   # GET /boxes/new.xml
   def new
-    @box = Box.new
-    @box.tag_list = "None Defined:(. Click to Edit"
-    @box.public = 't'
-    @box.save
     
+    if Box.last.nil? #IF completely empty database, create a Box to work on
+       @box = Box.new
+        @box.tag_list = "None Defined:(. Clickto Edit"
+        @box.public = 't'
+        @box.save
+    elsif Box.last.desc.nil?
+      @box = Box.last
+    else
+       @box = Box.new
+        @box.tag_list = "None Defined:(. Click to Edit"
+        @box.public = 't'
+        @box.save
+    end
     redirect_to(edit_box_path(@box))
   end
 
@@ -127,5 +137,20 @@ class BoxesController < ApplicationController
       format.html { redirect_to(my_boxes_path(params(:page))) }
       format.xml  { head :ok }
     end
+  end
+  
+  def update_sort_box
+   
+     render :update do |page|
+       if params[:sort] == ""
+         @boxes = Box.all.paginate(:per_page => 50, :page => params[:page])
+       elsif params[:sort] == "images"
+      @boxes = Box.where("oftype = ?", "image").paginate(:per_page => 50, :page => params[:page])
+      end
+      if params[:sort] == "text"
+      @boxes = Box.where("oftype = ?", "text").paginate(:per_page => 50, :page => params[:page])
+      end
+      page.replace_html "my_box_collection", :partial => 'box_collection', :object => @boxes
+     end
   end
 end
