@@ -36,7 +36,7 @@ class BoxesController < ApplicationController
    end
   
   def me
-    @boxes = Box.all.paginate(:per_page => 60, :page => params[:page])
+    @boxes = Box.find(:all, :order => "updated_at DESC").paginate(:per_page => 60, :page => params[:page])
     
     respond_to do |format|
       format.html # index.html.erb
@@ -142,10 +142,10 @@ class BoxesController < ApplicationController
   def update_sort_box
    
      render :update do |page|
-       if params[:sort] == ""
-         @boxes = Box.all.paginate(:per_page => 50, :page => params[:page])
+       if params[:sort] == "all"
+         @boxes = Box.find(:all, :order => "updated_at DESC").paginate(:per_page => 50, :page => params[:page])
        elsif params[:sort] == "images"
-      @boxes = Box.where("oftype = ?", "image").paginate(:per_page => 50, :page => params[:page])
+      @boxes = Box.where("oftype = ?", "image").order("created_at DESC").paginate(:per_page => 50, :page => params[:page])
       end
       if params[:sort] == "text"
       @boxes = Box.where("oftype = ?", "text").paginate(:per_page => 50, :page => params[:page])

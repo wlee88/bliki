@@ -1,9 +1,8 @@
-
-
-
-
-
-		<div id="paginate"><%= will_paginate @boxes%></div>
+<div id="paginate"><%= will_paginate @boxes%></div>
+<div class ="mybox">
+	<%= link_to "Add", new_box_path%>
+	<%= link_to image_tag ("/images/stock/Add.png"),new_box_path %>
+</div>
 <% @boxes.each do |box| %>
 <div id="<%= box.id.to_s %>" class="mybox" >
 		<span class="box_options"><%= link_to "Delete", box_path(box), :method => "delete"%></span>
