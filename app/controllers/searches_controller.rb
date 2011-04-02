@@ -6,6 +6,8 @@ class SearchesController < ApplicationController
        #Should show both boxes and posts. And also when viewing box, should show related posts that contain the box.
        @tags = Box.tagged_with(params[:search])
     else
+      
+    clear_no_tag_texts_from_posts  
    @tags = Post.tag_counts_on(:tags)
     end
   end

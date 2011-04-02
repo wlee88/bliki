@@ -18,9 +18,7 @@
 		<div id="search_canvas_main">
 		<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
 		<% #remove the default no_tag_text %>
-			<% if tag.name != no_tag_text%>
 	  			<%= link_to tag.name, searches_path(:search => tag.name), :class => css_class %>
-			<% end%>		
 		<% end %>
 		</div>
 	<% end%>

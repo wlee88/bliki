@@ -1,5 +1,5 @@
 module SearchesHelper
-  include ActsAsTaggableOn::TagsHelper
+
   
   def search_titlify(title)
     raw "<div id='search_title'>" + title + "</div>"

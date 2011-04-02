@@ -9,6 +9,13 @@ class ApplicationController < ActionController::Base
   helper :all
   private
   
+  def clear_no_tag_texts_from_posts
+      @posts = Post.tagged_with(no_tag_text)
+      @posts.each do |post|
+        post.tag_list = ""
+        post.save
+      end 
+  end
 
   def no_tag_text
     "None Defined:(. Click to Edit"
