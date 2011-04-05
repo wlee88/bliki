@@ -1,16 +1,26 @@
 Blox::Application.routes.draw do
 
   resources :pages
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   match "/posts/store" => "posts#store", :as => "store_posts"
   match "/posts/save_desc" => "posts#set_post_description", :as => "save_description_post"
   match "/posts/save_title" => "posts#set_post_title", :as => "save_description_title"
   match "/posts/save_tags" => "posts#set_post_tags", :as => "save_post_tags"
   match "/posts/save_box_desc" => "posts#set_box_desc", :as => "save_boxes_desc"
   match "/posts/say_hi" => "posts#say_hi", :as => "say_hi"
+
+
   match "boxes/set_box_tags" => "boxes#set_box_tags", :as => "save_boxes_tag"
   match "boxes/set_box_desc" => "boxes#set_box_desc"
   match "boxes/update_sort_box" => "boxes#update_sort_box", :as => "update_sort_box"
+  match "searches/update_search_box" => "searches#update_sort_box"
+  match "posts/update_sort_box" => "posts#update_sort_box"
+  match "posts/update_sort_post" => "posts#update_sort_post"
+  match "boxes/copy_box" => "boxes#copy_box", :as => "copy_box"
+  match "posts/create_favorite" => "posts#create_favorite", :as => "create_favorite"
+  match "posts/delete_favorite" => "posts#delete_favorite", :as => "delete_favorite"
   get "sessions/new"
   
   get "users/new"

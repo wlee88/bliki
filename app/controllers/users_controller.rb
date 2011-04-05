@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user.favorite = Favorite.create
     if @user.save
       redirect_to root_url, :notice => "Signed up!"
     else
@@ -28,7 +29,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         puts params[:user]
-        #format.html { redirect_to(@box, :notice => 'Box was successfully updated.') }
         format.html { redirect_to(@user, :notice => 'Post was successfully updated.')}
         format.xml  { head :ok }
       else

@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
         post.save
       end 
   end
+  
+  def clear_no_tag_texts_from_boxes
+     @boxes = Box.tagged_with(no_tag_text)
+      @boxes.each do |box|
+        box.tag_list = ""
+        box.save
+      end 
+  end
 
   def no_tag_text
     "None Defined:(. Click to Edit"

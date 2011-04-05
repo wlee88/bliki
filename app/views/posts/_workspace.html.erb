@@ -1,6 +1,11 @@
 	<div id="post_title_text">Title: <%= in_place_editor_field :post, :title, {}, :cols => 80, :rows => 1, :saving_text => "Saving..." %></div>
 	
 		<div id="post_tags_text">
+			<% if @post.tag_list.empty? %>
+			<% @post.tag_list = no_tag_text %>
+			<% @post.save%>
+			<% end %>
+			
 			<% @post.tags.each do |tag| %>
 			<% tag.name += "," %>
 			<% end %>
@@ -8,8 +13,10 @@
 
 	<% @post.boxes.each do |box| %>
 	<% if box.oftype == "image"%>
-		<%= link_to image_tag (box.image.url, :class => :workspace_box), say_hi_path(:destroy_post_id => @post.id, :destroy_box_id => box.id), :confirm => " Delete: Are you sure?", :remote => true%>
-	
+	<div class="workspace_box">
+		<span class="box_options"><%= link_to "Delete", say_hi_path(:destroy_post_id => @post.id, :destroy_box_id => box.id), :confirm => "Delete: Are you sure?", :remote => true%></span>
+		<%= link_to image_tag (box.image.url)%>
+	</div>
 	<% elsif box.oftype == "text" %>
 		<% @box = box %>
 		<% if @box.desc. == ""%>

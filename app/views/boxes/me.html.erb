@@ -3,12 +3,17 @@
 <% end %>
 
 
-</div>
-
 <div id="sort_box">
 	Sort By:
+	
+	<% @options = ["all"] %>
+<% @boxes.each do |box| %>
+	<%box.tags.each do |tag| %>
+		<% @options.delete(tag)%>
+		<% @options << tag %>
+	<% end %>
+<% end %>
 
-<% @options = {:all => 'all' , :images => 'images', :text => 'text', :music =>'music'} %>
 <%= select_tag 'sort[]', options_for_select(@options, :selected => 'all'), :include_blank => false,:onchange => remote_function(:url => {:controller => 'boxes', :action => :update_sort_box}, :with => "'sort='+this.value", :update => "div_containing_list") %>
 </div>
 

@@ -1,14 +1,21 @@
 <div id="paginate"><%= will_paginate @boxes%></div>
-<div id ="test" class ="mybox" title ="test">
+<span id="title_text_red">My Items</span>
+<div class ="mybox">
 	<%= link_to "Add", new_box_path%>
 	<%= link_to image_tag ("/images/stock/Add.png"),new_box_path %>
+	<span class="box_options">+</span>
 	
-</div>
+</div>	
 <% @boxes.each do |box| %>
-<div id="<%= box.id.to_s %>" class="mybox" >
+<% if box.desc.nil?%>
+
+<%else %>
+<div id="<%= box.id.to_s %>" class="mybox red" >
 		<span class="box_options"><%= link_to "Delete", box_path(box), :method => "delete"%></span>
-			<% #link_to(image_tag(box.url), box.url, :class => "top_up", :toptions => "shaded = 1, overlayClose = 1")%>
+			
 			<%# link_to(image_tag(box.url)) %>
-			<%= link_to image_tag (box.image.url), edit_box_path(box)%>
+			<%= link_to image_tag (box.image.url), edit_box_path(box), :title => box.desc%>
+			<span class="box_options"><%= link_to "View", box_path(box)%></span>
 	</div>
+<% end %>
 <% end %>

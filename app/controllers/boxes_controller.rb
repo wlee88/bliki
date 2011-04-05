@@ -6,6 +6,7 @@ class BoxesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   in_place_edit_for :box, :tag
   in_place_edit_for :box, :desc
+  auto_complete_for :box, :tags
   
   def set_box_desc
     @box = Box.find(params[:id])
@@ -16,8 +17,7 @@ class BoxesController < ApplicationController
      end
      @box.save!
      render :update do |page|
-      # page.call 'alert', 'My message!'
-      page.replace_html "workspace", :partial => 'form'
+       page.replace_html "workspace", :partial => 'form'
      end
   end
   
@@ -26,7 +26,7 @@ class BoxesController < ApplicationController
      if params[:value] == ""
          @box.tag_list = "No Tags Defined :(" #if box id is null, the editor will not show anything, thus give it a string "click to edit"
      else
-       @box.tag_list = params[:value]
+       @box.tag_list = params[:value].downcase
      end
      @box.save!
      render :update do |page|
@@ -36,8 +36,8 @@ class BoxesController < ApplicationController
    end
   
   def me
-    @boxes = Box.find(:all, :order => "updated_at DESC").paginate(:per_page => 60, :page => params[:page])
-    
+    @boxes = Box.where("user_id = ?", current_user.id).paginate(:per_page => 60, :page => params[:page])
+   
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @boxes }
@@ -72,15 +72,15 @@ class BoxesController < ApplicationController
     
     if Box.last.nil? #IF completely empty database, create a Box to work on
        @box = Box.new
-        @box.tag_list = "None Defined:(. Clickto Edit"
         @box.public = 't'
+        @box.user = current_user
         @box.save
     elsif Box.last.desc.nil?
       @box = Box.last
     else
        @box = Box.new
-        @box.tag_list = "None Defined:(. Click to Edit"
         @box.public = 't'
+        @box.user = current_user
         @box.save
     end
     redirect_to(edit_box_path(@box))
@@ -89,6 +89,8 @@ class BoxesController < ApplicationController
   # GET /boxes/1/edit
   def edit
     @box = Box.find(params[:id])
+     @box.user = current_user
+     @box.save
     @tags = @box.tags
   end
 
@@ -96,7 +98,7 @@ class BoxesController < ApplicationController
   # POST /boxes.xml
   def create
     @box = Box.new(params[:box])
-    @box.owner = current_user.id
+    @box.user = current_user
     
 
     respond_to do |format|
@@ -118,7 +120,7 @@ class BoxesController < ApplicationController
     respond_to do |format|
       if @box.update_attributes(params[:box])
         #format.html { redirect_to(@box, :notice => 'Box was successfully updated.') }
-        format.html {redirect_to boxes_path}
+        format.html {redirect_to my_boxes_path}
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -132,9 +134,8 @@ class BoxesController < ApplicationController
   def destroy
     @box = Box.find(params[:id])
     @box.destroy
-    puts "destroy called"
     respond_to do |format|
-      format.html { redirect_to(my_boxes_path(params(:page))) }
+      format.html { redirect_to(my_boxes_path) }
       format.xml  { head :ok }
     end
   end
@@ -150,7 +151,29 @@ class BoxesController < ApplicationController
       if params[:sort] == "text"
       @boxes = Box.where("oftype = ?", "text").paginate(:per_page => 50, :page => params[:page])
       end
-      page.replace_html "my_box_collection", :partial => 'box_collection', :object => @boxes
+      page.replace_html "my_box_collection", :partial => 'boxes/box_collection', :object => @boxes
      end
   end
+  
+  def copy_box
+    @box_copy = Box.find(params[:id])
+    @box = Box.new
+    @box.user = current_user
+    @box.public = @box_copy.public
+    @box.desc = @box_copy.desc
+    @box.oftype = @box_copy.oftype
+    @box.tag_list = @box_copy.tag_list
+    @box.image_file_name = @box_copy.image_file_name
+    @box.image_content_type =  @box_copy.image_content_type
+    @box.image_file_size = @box_copy.image_file_size
+    @box.image_updated_at = @box_copy.image_updated_at
+    @box.save
+
+    redirect_to(my_boxes_path)
+  end
+  
+  
+  
 end
+
+

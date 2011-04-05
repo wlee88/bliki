@@ -2,6 +2,7 @@ class PostsController < ApplicationController
    before_filter :authenticate
   in_place_edit_for :post, :title 
   in_place_edit_for :post, :tag
+    skip_before_filter :verify_authenticity_token
   #Box.find(:all, :conditions => ["owner = ?", current_user.id])
   
   # GET /posts
@@ -41,7 +42,7 @@ class PostsController < ApplicationController
      if params[:value] == ""
          @post.tag_list = no_tag_text #if box id is null, the editor will not show anything, thus give it a string "click to edit"
      else
-       @post.tag_list = params[:value]
+       @post.tag_list = params[:value].downcase
      end
      @post.save!
      render :update do |page|
@@ -66,19 +67,52 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all
+    if Post.count <= 1
+      redirect_to new_post_path #since nothing to show, might as well redirect to new post path
+    else
+     @posts = Post.find(:all, :order => "updated_at DESC")
+     @years = [""]
+     @months = [""]
+     @posts.each do |post|
+     t = post.updated_at
+     
+     #get years which aren't this year into array.
+    
+      @years.delete(t.year)
+      @years << t.year
+     
+      @months.delete(t.month)
+      @months << t.month
+      
+    # puts @years
+     puts @months
+    end
+   end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
     end
-  end
+    
+end
 
   # GET /posts/1
   # GET /posts/1.xml
 
   
   def show
-    if params[:destroy_box_id] 
+    
+    if params[:id == "delete_favorite"]
+      current_user.favorite_list.delete(params[:delete_favorite])
+      current_user.save
+      redirect_to posts_path
+    
+    elsif params[:post_for_favorite]
+      current_user.favorite_list.delete(params[:post_for_favorite])
+      current_user.favorite_list << params[:post_for_favorite]
+      current_user.save
+      redirect_to posts_path
+      
+    elsif params[:destroy_box_id] 
       @post = Post.find(params[:destroy_post_id])
       @box = Box.find(params[:destroy_box_id])
       
@@ -88,6 +122,8 @@ class PostsController < ApplicationController
          page.replace_html "workspace", :partial => 'workspace'
         end
     else
+      @post = Post.find(params[:id])
+      @comment = @post.comments.create(params[:comment])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
@@ -121,7 +157,6 @@ class PostsController < ApplicationController
 
     @boxes = Box.all.paginate(:per_page => 8, :page => params[:page])
     @post = Post.find(params[:id])
-    @tags = @post.tags
     
     respond_to do |format|
         format.html
@@ -129,9 +164,10 @@ class PostsController < ApplicationController
           render :update do |page|
             # 'page.replace' will replace full "results" block...works for this example
             # 'page.replace_html' will replace "results" inner html...useful elsewhere
+            page.replace 'box_paginate_area', :partial => "boxes/box_paginate_area"
             page.replace 'my_box_area', :partial => 'boxes/box_area'
-          end
-        }
+             end
+          }
         end
   end
 
@@ -183,6 +219,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     if (params[:id] == "textbox")
      @box = @post.boxes.create(:oftype => "text", :desc => "Click to Edit")
+     @box.tag_list = no_tag_text
+     @box.save
     else
      @box = @post.boxes << Box.find(params[:id])
       end
@@ -194,4 +232,45 @@ class PostsController < ApplicationController
   end
   
   
-end
+  def update_sort_box
+
+        render :update do |page|
+          if params[:sort] == "all"
+            @boxes = Box.find(:all, :order => "updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+          elsif params[:sort] == "images"
+         @boxes = Box.where("oftype = ?", "image").order("created_at DESC").paginate(:per_page => 8, :page => params[:page])
+       elsif params[:sort] == "text"
+         @boxes = Box.where("oftype = ?", "text").paginate(:per_page => 8, :page => params[:page])
+        else 
+          @boxes = Box.tagged_with(params[:sort]).paginate(:per_page => 8, :page => params[:page])
+         end
+         if @boxes.count <= 8 
+            page.replace 'box_paginate_area', "<div id='box_paginate_area'> </div>"
+         end
+         page.replace_html "my_box_area", :partial => 'boxes/box_area', :object => @boxes
+  
+        end
+  
+   end
+  
+  def delete_favorite
+    redirect_to posts_path
+  end 
+   
+   def update_sort_post
+
+         render :update do |page|
+            if params[:sort] == "all"
+                @posts = Post.find(:all, :order => "updated_at DESC").paginate(:per_page => 20, :page => params[:page])
+            else 
+              @posts = Post.tagged_with(params[:sort]).paginate(:per_page => 20, :page => params[:page])
+            end
+         page.replace 'post_collection', :partial => 'post_collection', :object => @boxes
+         end
+
+    end
+
+   
+
+  
+ end

@@ -1,0 +1,12 @@
+<%= will_paginate @posts%>
+		<% @posts.each do |post| %>
+	
+			<div class="mybox green">
+			<% if post.boxes.first.respond_to?('image')%>
+				<span class="box_options"><%= link_to "Add To Favourites", create_favorite_path(:post_for_favorite => post.id)%></span>
+			<%= link_to image_tag (post.boxes.first.image.url, :class => :box), post_path(post) %>
+			<% else %>
+			<% end%>
+			</div>
+
+		<% end %>

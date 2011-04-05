@@ -2,23 +2,36 @@
 <span id="title_text">		<span id="username_text">Logged in as <%= current_user.username.capitalize %></span></span>
 <% end %>
 </div>
+
 <div id="container">
 	
 	<% if params[:search] %>
-		<%= search_titlify("Tags matching: " + params[:search])%>
-		<%= link_to "Back to Tags", searches_path, :class => :mega_button%>
-		<% @posts.each do |post| %>
-		<div id="search_canvas">
-			<% #this shows an error if empty %>
-			<%= image_tag (post.boxes.first.image.url, :class => :box) %>
+		<div id="sort_box_search">
+			Sort By:
+		<% @options = {:all => 'all' , :images => 'images', :text => 'text', :music =>'music'} %>
+		<%= select_tag 'sort[]', options_for_select(@options, :selected => 'all'), :include_blank => false,:onchange => remote_function(:url => {:controller => 'searches', :action => :update_sort_box, :search => params[:search]}, :with => "'sort='+this.value", :update => "div_containing_list") %>
 		</div>
-		<% end %>
+		<%= search_titlify("Tags matching: " + params[:search].downcase)%>
+		<%= link_to "Back to Tags", searches_path, :class => :mega_button%>
+				<%= will_paginate @boxes%>
+		<% if !(@posts.empty?)%>
+					<div id="search_canvas_posts">
+			<% end %>
+	<%= render :partial => 'search_canvas_posts' %>
+		<% if !(@posts.empty?)%>
+	</div>
+	
+	<% end %>
+	
+<div id="search_canvas_items">	
+		<%= render :partial => 'search_canvas_items' %>
+		</div>
 	<% else %>
 		<%= search_titlify("Tag Cloud")%>
 		<div id="search_canvas_main">
 		<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
 		<% #remove the default no_tag_text %>
-	  			<%= link_to tag.name, searches_path(:search => tag.name), :class => css_class %>
+	  			<%= link_to tag.name.downcase, searches_path(:search => tag.name), :class => css_class %>
 		<% end %>
 		</div>
 	<% end%>

@@ -37,10 +37,8 @@
 	Upload an Image!: <%= f.file_field :image %>
   </div>
 <div class="form_field">
-		<% @box.tags.each do |tag| %>
-		<% tag.name += "," %>
-		<% end %>
-	Tags: <%= in_place_editor_field :box, :tags, {}, :cols => 80, :rows => 1, :saving_text => "Saving..." %>
+	 Tags(separate by ,)
+	<%= f.text_field :tag_list%>
 </div>
   <div class="form_field form_submit">
     <%= f.submit %>

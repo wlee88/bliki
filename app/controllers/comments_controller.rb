@@ -1,15 +1,18 @@
 class CommentsController < ApplicationController
    before_filter :authenticate
+       skip_before_filter :verify_authenticity_token
   def create
-      @box = Box.find(params[:box_id])
-      @comment = @box.comments.create(params[:comment])
-      redirect_to box_path(@box)
+      @post = Post.find(params[:post_id])
+      @comment = @post.comments.create(params[:comment])
+      @comment.user_id = current_user.id
+      @comment.save
+      redirect_to post_path(@post)
     end
     
     def destroy
-       @box = Box.find(params[:box_id])
-       @comment = @box.comments.find(params[:id])
+       @post = Post.find(params[:post_id])
+       @comment = @post.comments.find(params[:id])
        @comment.destroy
-       redirect_to box_path(@box)
+       redirect_to post_path(@post)
      end
 end

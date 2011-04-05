@@ -6,13 +6,17 @@
 </div>
 
 <div id ="workspace">
+
 <%= render 'workspace' %>
 </div>
 
 <div id="sort_box">
 	Sort By:
-
-<% @options = {:latest => 'latest' , :images => 'images', :text => 'text', :music =>'music'} %>
-<%= select_tag 'sort[]', options_for_select(@options), :include_blank => true,:onchange => remote_function(:url => {:controller => 'boxes', :action => :update_sort_box}, :with => "'sort='+this.value", :update => "div_containing_list") %>
+	
+<% @options = [["all"],["images"],["text"] ] %>
+<% @post.tags.each do |tag|%>
+	<% @options << tag.to_s.gsub(",", "")%>
+<% end %>
+<%= select_tag 'sort[]', options_for_select(@options, :selected => 'all'), :include_blank => false,:onchange => remote_function(:url => {:controller => 'posts', :action => :update_sort_box}, :with => "'sort='+this.value", :update => "div_containing_list") %>
 </div>
 <%= render 'boxes/box_area'%>
