@@ -1,0 +1,11 @@
+<div id="sort_box_dates">
+	Months:
+	<% @years.each do |year| %>
+		<% @months.each do |month|%>
+		<% date = Date.parse("2010-#{month}-01")%>
+			<% @options = [date.strftime('%B') + " - "+ year] %>
+		<% end%>
+	<% end %>
+	<%@options << "May - 2011"%>
+<%= select_tag 'sort[]', options_for_select(@options, :selected => 'all'), :include_blank => false,:onchange => remote_function(:url => {:controller => 'posts', :action => :update_sort_post_date}, :with => "'sort='+this.value", :update => "div_containing_list") %>
+</div>

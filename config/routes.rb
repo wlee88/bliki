@@ -11,13 +11,13 @@ Blox::Application.routes.draw do
   match "/posts/save_box_desc" => "posts#set_box_desc", :as => "save_boxes_desc"
   match "/posts/say_hi" => "posts#say_hi", :as => "say_hi"
 
-
   match "boxes/set_box_tags" => "boxes#set_box_tags", :as => "save_boxes_tag"
   match "boxes/set_box_desc" => "boxes#set_box_desc"
   match "boxes/update_sort_box" => "boxes#update_sort_box", :as => "update_sort_box"
   match "searches/update_search_box" => "searches#update_sort_box"
   match "posts/update_sort_box" => "posts#update_sort_box"
   match "posts/update_sort_post" => "posts#update_sort_post"
+  match "posts/update_sort_post_date" => "posts#update_sort_post_date"
   match "boxes/copy_box" => "boxes#copy_box", :as => "copy_box"
   match "posts/create_favorite" => "posts#create_favorite", :as => "create_favorite"
   match "posts/delete_favorite" => "posts#delete_favorite", :as => "delete_favorite"

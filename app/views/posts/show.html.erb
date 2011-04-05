@@ -1,6 +1,8 @@
 <%= title("View Post")%>
 <p id="notice"><%= notice %></p>
 
+<%= link_to "Add to Favorites",create_favorite_path(:post_for_favorite => params[:id]), :class => :mega_button %>
+
 <div id="view_page">
 	<div id="post_title_text"><%=@post.title%></div>
 		<div id="post_tags_text">Tags:

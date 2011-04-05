@@ -13,7 +13,7 @@
 <div id="sort_box">
 	Sort By:
 	
-<% @options = [["all"],["images"],["text"] ] %>
+<% @options = [["all"],["images"],["text"], [filler_string] ] %>
 <% @post.tags.each do |tag|%>
 	<% @options << tag.to_s.gsub(",", "")%>
 <% end %>

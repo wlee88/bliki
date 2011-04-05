@@ -47,7 +47,7 @@ class PostsController < ApplicationController
      @post.save!
      render :update do |page|
       # page.call 'alert', 'My message!'
-      page.replace_html "workspace", :partial => 'workspace'
+      page.reload
      end
    end
   
@@ -78,15 +78,16 @@ class PostsController < ApplicationController
      
      #get years which aren't this year into array.
     
-      @years.delete(t.year)
-      @years << t.year
+      @years.delete(t.year.to_s)
+      @years << t.year.to_s
      
-      @months.delete(t.month)
-      @months << t.month
+      @months.delete(t.month.to_s)
+      @months << t.month.to_s
       
-    # puts @years
-     puts @months
+
     end
+    @years.delete("")
+    @months.delete("")
    end
     respond_to do |format|
       format.html # index.html.erb
@@ -104,13 +105,13 @@ end
     if params[:id == "delete_favorite"]
       current_user.favorite_list.delete(params[:delete_favorite])
       current_user.save
-      redirect_to posts_path
+      redirect_to searches_path
     
     elsif params[:post_for_favorite]
       current_user.favorite_list.delete(params[:post_for_favorite])
       current_user.favorite_list << params[:post_for_favorite]
       current_user.save
-      redirect_to posts_path
+      redirect_to searches_path
       
     elsif params[:destroy_box_id] 
       @post = Post.find(params[:destroy_post_id])
@@ -233,7 +234,7 @@ end
   
   
   def update_sort_box
-
+    
         render :update do |page|
           if params[:sort] == "all"
             @boxes = Box.find(:all, :order => "updated_at DESC").paginate(:per_page => 8, :page => params[:page])
@@ -254,11 +255,35 @@ end
    end
   
   def delete_favorite
-    redirect_to posts_path
+    redirect_to searches_path
   end 
+  
+  def update_sort_post_date
+    #parse params[:sort] into a date, and then search by month. Explode string by -
+    
+    
+     page.replace_html "my_box_area", :partial => 'boxes/box_area', :object => @posts
+  end
    
    def update_sort_post
+      @posts = Post.find(:all, :order => "updated_at DESC")
+      @years = [""]
+      @months = [""]
+      @posts.each do |post|
+      t = post.updated_at
 
+      #get years which aren't this year into array.
+
+       @years.delete(t.year.to_s)
+       @years << t.year.to_s
+
+       @months.delete(t.month.to_s)
+       @months << t.month.to_s
+
+
+     end
+     @years.delete("")
+     @months.delete("")
          render :update do |page|
             if params[:sort] == "all"
                 @posts = Post.find(:all, :order => "updated_at DESC").paginate(:per_page => 20, :page => params[:page])

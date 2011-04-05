@@ -12,16 +12,19 @@ class SearchesController < ApplicationController
 
               page.replace_html "search_canvas_posts", :partial => 'search_canvas_posts', :object => @posts
               page.replace_html "search_canvas_items", :partial => 'search_canvas_items', :object => @boxes
+            
   
             end
           }
         end
     else
-      
+      @boxes = Box.all.paginate(:per_page => 1, :page => params[:page])
+      @posts = Post.all.paginate(:per_page => 1, :page => params[:page])
     clear_no_tag_texts_from_posts  
     clear_no_tag_texts_from_boxes
    @tags = Box.tag_counts_on(:tags)
     end
+    
   end
   
   def update_sort_box

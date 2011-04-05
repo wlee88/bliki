@@ -6,7 +6,7 @@ class BoxesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   in_place_edit_for :box, :tag
   in_place_edit_for :box, :desc
-  auto_complete_for :box, :tags
+
   
   def set_box_desc
     @box = Box.find(params[:id])
@@ -36,7 +36,8 @@ class BoxesController < ApplicationController
    end
   
   def me
-    @boxes = Box.where("user_id = ?", current_user.id).paginate(:per_page => 60, :page => params[:page])
+    @boxes = Box.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+    @posts = Post.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 3, :page => params[:page])
    
     respond_to do |format|
       format.html # index.html.erb

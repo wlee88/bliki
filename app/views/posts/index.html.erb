@@ -3,11 +3,10 @@
 
 <%= render 'post_collection'%>
 
-
-
 <div id="sort_box">
 	Sort By:
 	<% @options = ["all"]%>
+<% @options << [filler_string]%>
 <% @posts.each do |post|%>
 	<%post.tags.each do |tag|%>
 		<% @options.delete(tag)%>
@@ -18,12 +17,5 @@
 <%= select_tag 'sort[]', options_for_select(@options, :selected => 'all'), :include_blank => false,:onchange => remote_function(:url => {:controller => 'posts', :action => :update_sort_post}, :with => "'sort='+this.value", :update => "div_containing_list") %>
 </div>
 
+<%= render :partial => 'date_sort_box' %>
 
-<div id="post_favorites">	
-	<span id="title_text_orange">Favorites</span>
-<% current_user.favorites.each do |postid|%>
-	<div class="mybox orange">
-		<span class="box_options"><%= link_to "Delete", delete_favorite_path(:delete_favorite => postid.to_s)%></span>
-		<span class="box_options"><%= link_to image_tag (Post.find(postid.to_s).boxes.first.image.url)%></span>
-	</div>
-<% end %>

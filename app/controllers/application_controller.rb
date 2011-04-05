@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :get_username #Gets Username by current_id 
   helper_method :get_boxes_public #Gets all boxes which are marked public
   helper_method :browser_tag #returns code relevent for browser link viewing. A convenience method.
+  helper_method :filler_string 
   helper :all
   private
   
@@ -62,6 +63,10 @@ class ApplicationController < ActionController::Base
   def authenticate 
     if session[:user_id].nil?
     redirect_to log_in_path
+  end
+  
+  def filler_string
+    "---------"
   end
   
 end

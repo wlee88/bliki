@@ -1,8 +1,14 @@
 <div id="post_collection">
-<span id="title_text_green">Posts
+
+<% date = DateTime.now%>
+<span id="title_text_large">Posts - <%= date.strftime("%B") %> <%= date.year%> </span>
+<div id="paginate"><%= will_paginate @posts%>
+<br />
+<br />
+<hr />
+<br />
 	
-	</span>
-<div class ="mybox">
+<div class ="mybox_me">
 	<%= link_to "Add", new_post_path%>
 	<%= link_to image_tag ("/images/stock/Add.png"),new_post_path %>
 	<span class="box_options"> + </span>
@@ -10,13 +16,14 @@
 <% @posts.each do |post| %>
 		
 		<% if post.boxes.first.respond_to?('image')%>
-		<div class="mybox green">
+		<div class="mybox_me">
 				<span class="box_options"><%= link_to "Delete", post_path(post), :method => "delete"%></span>
-		<%= link_to image_tag (post.boxes.first.image.url), edit_post_path(post), :title => post.description%>	
-				<span class="box_options"><%= link_to "View", post_path(post) %></span>
+		<%= link_to image_tag (post.boxes.first.image.url), post_path(post), :title => post.tag_list%>	
+				<span class="box_options"><%= link_to "Edit", edit_post_path(post) %></span>
 	
 				</div>
 		<% end%>
 	
 <%end %>
 </div>
+
