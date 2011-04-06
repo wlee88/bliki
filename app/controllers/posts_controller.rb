@@ -102,7 +102,7 @@ end
   
   def show
     
-    if params[:id == "delete_favorite"]
+    if params[:delete_favorite]
       current_user.favorite_list.delete(params[:delete_favorite])
       current_user.save
       redirect_to searches_path

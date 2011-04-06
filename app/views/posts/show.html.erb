@@ -21,7 +21,9 @@
 	<% end %>
 <% end %>
 
-
+	<div id="sacredo_signature">
+		Written by: <%=@post.user.username.capitalize%> (Last updated: <%=@post.updated_at.strftime("%Y-%m-%d %H:%M")%>)
+	</div>
 </div>
 <div id="comment_area">
 <%@post.comments.each do |comment| %>

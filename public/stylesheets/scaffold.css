@@ -564,23 +564,23 @@ z-index: 1000;
 	padding-bottom:20px;
 	border-radius: 15px;
 	text-decoration: none;
-	background-color:red;
+	background-color:orange;
 	box-shadow: 10px 10px 5px red;
 	-moz-box-shadow: 0px 0px 5px red;
 	-webkit-box-shadow:0px 0px 20px red;
 }
 
-#sort_box
+#sort_box_items
 {
 	display :inline-block;
 	color: yellow;
-	position: fixed;
+	position: absolute;
 	padding-bottom: 2px;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top:2px;
-	top: 150px;
-	left: 1000px;
+	top: 170px;
+	left: 820px;
 	text-decoration: none;
 	background-color: black;
 	border-radius:30px;
@@ -602,7 +602,7 @@ z-index: 1000;
 	border-radius:30px;
 }
 
-#sort_box_post
+#sort_box_posts
 {
 	display :inline-block;
 	color: yellow;
@@ -611,8 +611,26 @@ z-index: 1000;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top:2px;
-	top: 150px;
-	left: 1040px;
+	top: 170px;
+	left: 220px;
+	text-decoration: none;
+	background-color: black;
+	border-radius:30px;
+}
+
+#sort_box
+{
+	text-align:center;
+	display :inline-block;
+	color: yellow;
+	position: fixed;
+	width: 300px;
+	padding-bottom: 2px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top:2px;
+	top: 170px;
+	left: 910px;
 	text-decoration: none;
 	background-color: black;
 	border-radius:30px;
@@ -700,6 +718,30 @@ a:hover.mega_button
 #flash_notice
 {display: none;}
 
+#search_canvas_users
+{
+	min-height: 125px;
+	max-width: 995px;
+	margin-left: 100px;
+	background-color: black;
+	box-shadow: 0px 0px 20px yellow;
+	-moz-box-shadow: 0px 0px 20px yellow;
+	-webkit-box-shadow:0px 0px 20px yellow;
+	color: white;
+}
+#search_canvas_dates
+{
+	min-height: 125px;
+	max-width: 995px;
+	margin-left: 100px;
+	margin-top:15px;
+	background-color: blue;
+	box-shadow: 0px 0px 20px yellow;
+	-moz-box-shadow: 0px 0px 20px yellow;
+	-webkit-box-shadow:0px 0px 20px yellow;
+	color: white;
+}
+
 #search_canvas_posts
 {
 	min-height: 125px;
@@ -711,11 +753,13 @@ a:hover.mega_button
 	-webkit-box-shadow:0px 0px 20px #14D100;
 }
 
+
+
 #search_canvas_items
 {
 	min-height: 125px;
 	max-width: 995px;
-	margin-top:10px;
+	margin-top:15px;
 	margin-left: 100px;
 	margin-bottom: 5px;
 	padding-top: 5px;
@@ -765,6 +809,7 @@ a.css4 { font-size: 1.6em; color: #FF9F00; text-decoration: none;}
 
 #search_title
 {
+	padding-top: 20px;
 	text-align: center;
 	font-size:30px;
 	color: #FF8500;
@@ -857,8 +902,8 @@ a.css4 { font-size: 1.6em; color: #FF9F00; text-decoration: none;}
 	display: inline-block;
 	margin-left: 5px;
 	margin-bottom: 10px;
-	height: 280px;
-	width: 200px;
+	height: 260px;
+	width: 150px;
 	box-shadow: 0px 0px 20px black;
 	-moz-box-shadow: 0px 0px 20px black;
 	-webkit-box-shadow:0px 0px 20px black;
@@ -883,8 +928,8 @@ a.css4 { font-size: 1.6em; color: #FF9F00; text-decoration: none;}
 
 #post_collection_main img{
 	display: inline-block;
-	height: 280px;
-	width: 200px;
+	height: 240px;
+	width: 150px;
 	float: left;
 	/*to do opacity */
 }
@@ -924,12 +969,29 @@ a.css4 { font-size: 1.6em; color: #FF9F00; text-decoration: none;}
 }
 
 .favorite_image{
-	height:242px;
-	width: 200px;
+	height:202px;
+	width: 150px;
+}
+.favorite_images{
+	height:220px;
+	width: 150px;
+}
+
+.search_image{
+	height: 222px;
+	width: 150px;
 }
 
 #collection{
 	margin-top: 120px;
+}
+
+#sacredo_signature{
+	padding-top: 20px;
+	padding-bottom: 30px;
+	text-align: center;
+	font-size:20px;
+	text-shadow: 2px 2px 2px black;
 }
 
 

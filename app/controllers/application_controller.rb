@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  helper_method :clear_no_tag_texts_from_posts
   helper_method :current_user #obtains current attributes as object
   helper_method :get_boxes #gets current user's Boxes
   helper_method :get_username #Gets Username by current_id 

@@ -17,6 +17,7 @@ Blox::Application.routes.draw do
   match "searches/update_search_box" => "searches#update_sort_box"
   match "posts/update_sort_box" => "posts#update_sort_box"
   match "posts/update_sort_post" => "posts#update_sort_post"
+  match "boxes/update_sort_posts" => "boxes#update_sort_posts"
   match "posts/update_sort_post_date" => "posts#update_sort_post_date"
   match "boxes/copy_box" => "boxes#copy_box", :as => "copy_box"
   match "posts/create_favorite" => "posts#create_favorite", :as => "create_favorite"

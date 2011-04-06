@@ -10,14 +10,11 @@
 	
 </div>	
 <% @boxes.each do |box| %>
-<% if box.desc.nil?%>
-
-<%else %>
+<% if !box.desc.nil?%>
 
 	<div id="<%= box.id.to_s %>" class="mybox_me" >
 			<span class="box_options"><%= link_to "Delete", box_path(box), :method => "delete"%></span>
 				
-				<%# link_to(image_tag(box.url)) %>
 				<%= link_to image_tag (box.image.url), edit_box_path(box), :title => box.desc%>
 				<span class="box_options"><%= link_to "View", box.image.url%></span>
 		</div>

@@ -1,7 +1,7 @@
-<div id="sort_box">
+<div id="sort_box_items">
 	Sort By:
 	
-	<% @options = ["all"] %>
+	<% @options = ["all", "images", "text", filler_string] %>
 <% @boxes.each do |box| %>
 	<%box.tags.each do |tag| %>
 		<% @options.delete(tag)%>

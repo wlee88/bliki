@@ -1,7 +1,7 @@
-
+<%= search_titlify("Items matching: " + params[:search].downcase)%>
 		<% @boxes.each do |box| %>
-			<div class="mybox red">
+			<div class="post_collection_main_items">
 					<span class="box_options"><%= link_to "Add to Collection", copy_box_path(:id => box.id) %></span>
-			<%= image_tag (box.image.url, :class => :search_canvas_item) %>
+			<%= image_tag box.image.url, :class => :search_image, :title => box.desc %>
 			</div>
 		<% end %>	

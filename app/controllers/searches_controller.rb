@@ -1,9 +1,10 @@
 class SearchesController < ApplicationController
   before_filter :authenticate
   def index
+    clear_no_tag_texts_from_posts
     if params[:search]
-       @posts = Post.tagged_with(params[:search]).paginate(:per_page => 20, :page => params[:page])
-       @boxes = Box.tagged_with(params[:search]).paginate(:per_page => 20, :page => params[:page])
+       @posts = Post.tagged_with(params[:search])
+       @boxes = Box.tagged_with(params[:search])
        #Should show both boxes and posts. And also when viewing box, should show related posts that contain the box.
        respond_to do |format|
           format.html

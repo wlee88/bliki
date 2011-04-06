@@ -37,7 +37,7 @@ class BoxesController < ApplicationController
   
   def me
     @boxes = Box.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
-    @posts = Post.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 3, :page => params[:page])
+    @posts = Post.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
    
     respond_to do |format|
       format.html # index.html.erb
@@ -145,17 +145,30 @@ class BoxesController < ApplicationController
    
      render :update do |page|
        if params[:sort] == "all"
-         @boxes = Box.find(:all, :order => "updated_at DESC").paginate(:per_page => 50, :page => params[:page])
+        @boxes = Box.order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
        elsif params[:sort] == "images"
-      @boxes = Box.where("oftype = ?", "image").order("created_at DESC").paginate(:per_page => 50, :page => params[:page])
-      end
-      if params[:sort] == "text"
-      @boxes = Box.where("oftype = ?", "text").paginate(:per_page => 50, :page => params[:page])
-      end
-      page.replace_html "my_box_collection", :partial => 'boxes/box_collection', :object => @boxes
+      @boxes = Box.where("oftype = ?", "image").order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+      elsif params[:sort] == "text"
+      @boxes = Box.where("oftype = ?", "text").order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+    else
+      @boxes = Box.tagged_with(params[:sort]).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
      end
+     page.replace_html "my_box_collection", :partial => 'boxes/box_collection', :object => @boxes
+   end
   end
-  
+
+  def update_sort_posts
+   
+     render :update do |page|
+       if params[:sort] == "all"
+         @posts = Post.all.order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+      else
+      @posts = Post.tagged_with(params[:sort]).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+     end
+     page.replace_html "my_posts_collection", :partial => 'posts/post_collection', :object => @boxes
+   end
+  end  
+
   def copy_box
     @box_copy = Box.find(params[:id])
     @box = Box.new
