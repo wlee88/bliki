@@ -4,7 +4,11 @@
 <%= link_to "Add to Favorites",create_favorite_path(:post_for_favorite => params[:id]), :class => :mega_button %>
 
 <div id="view_page">
+	<% if current_user.id == Post.find(params[:id]).user.id%>
+		<div id="post_title_text_edit"><%= link_to "You are the owner of this post, click here to edit", edit_post_path(params[:id])%></div>
+	<%end%>
 	<div id="post_title_text"><%=@post.title%></div>
+
 		<div id="post_tags_text">Tags:
 		<%@post.tag_list.each do |tag|%>
 			 <span class="highlight_red"><%= link_to tag, searches_path(:search => tag)%></span>

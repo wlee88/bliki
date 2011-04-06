@@ -3,5 +3,6 @@
 			<div class="post_collection_main_items">
 					<span class="box_options"><%= link_to "Add to Collection", copy_box_path(:id => box.id) %></span>
 			<%= image_tag box.image.url, :class => :search_image, :title => box.desc %>
+			<a title="Description: <%=box.desc %>, :Tags: <%=box.tag_list%>">(more info)</a>
 			</div>
 		<% end %>	

@@ -1,6 +1,8 @@
 <% content_for :title do %>
 <span id="title_text">Edit Item</span>
 <% end %>
-<div id="workspace">
+
+<div id="view_box">
+	<%= link_to "Back", my_boxes_path, :id => :back_form_button%>
 <%= render 'form' %>
 </div>

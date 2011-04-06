@@ -1,5 +1,5 @@
 <div id="sort_box_items">
-	Sort By:
+	Filter:
 	
 	<% @options = ["all", "images", "text", filler_string] %>
 <% @boxes.each do |box| %>
@@ -9,5 +9,5 @@
 	<% end %>
 <% end %>
 
-<%= select_tag 'sort[]', options_for_select(@options, :selected => 'all'), :include_blank => false,:onchange => remote_function(:url => {:controller => 'boxes', :action => :update_sort_box}, :with => "'sort='+this.value", :update => "div_containing_list") %>
+<%= select_tag 'sort[]', options_for_select(@options, :selected => filler_string), :include_blank => false,:onchange => remote_function(:url => {:controller => 'boxes', :action => :update_sort_box}, :with => "'sort='+this.value", :update => "div_containing_list") %>
 </div>

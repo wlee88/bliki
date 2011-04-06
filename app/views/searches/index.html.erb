@@ -9,8 +9,11 @@
 	
 	<% if params[:search] %>
 		
+
+			<%= link_to "Back", searches_path ,:id => :back_button%>
+
 		<% @user = User.find(:all, :conditions => ["username like ?", params[:search]]).first%>
-	
+		
 		<% if !@user.nil?%>
 			<div id="search_canvas_users">
 			<%=search_titlify "Posts by: " + params[:search]%>
@@ -19,6 +22,7 @@
 			<% if post.boxes.first.respond_to?('image')%>
 	   		 	<div class="post_collection_main_items">
 	   		 	<%= link_to image_tag (post.boxes.first.image.url, :class => :favorite_image), post_path(post)%>
+				<a title="Title: <%=post.title %>, Tags: <%=post.tag_list%>">(more info)</a>
 	   		 	</div>
 			<% end %>
 			<% end %>
@@ -30,13 +34,12 @@
 		<div id="search_canvas_dates">
 			<%= search_titlify("Posts <=" + params[:search].downcase)%>
 			<% @posts.each do |post|%>
-			
 				
 				<% if post.boxes.first.respond_to?('image')%>
 		   		 <div class="post_collection_main_items">
 				<%= link_to "Author: " + post.user.username.to_s, searches_path(:search=> post.user.username.to_s)%>
 			 	<%= link_to image_tag (post.boxes.first.image.url, :class => :search_image), post_path(post)%>
-			
+				<a title="Title: <%=post.title %>, Tags: <%=post.tag_list%>">(more info)</a>
 			 	</div>
 				<% end %>
 			
@@ -49,7 +52,6 @@
 		
 		<% @posts = Post.tagged_with(params[:search])%>
 		<% if !(@posts.empty?)%>
-
 					<div id="search_canvas_posts">
 								
 			<% end %>
@@ -70,7 +72,7 @@
 	<div id="tag_cloud">
 		
 		<div id="search_canvas_main">
-			<%= search_titlify("Tag Cloud")%>
+			<%= search_titlify("Community Tag Cloud")%>
 		<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
 		<% #remove the default no_tag_text %>
 	  			<%= link_to tag.name.downcase, searches_path(:search => tag.name), :class => css_class %>
@@ -78,38 +80,27 @@
 		</div>
 
 	</div>
-
-	<div id="post_collection_main">
-		<% @posts = Post.all%>
-		<%@posts.each do |post|%>
-			<% if post.boxes.nil?%>
-				post.destroy
-			<% end %>
+	<% @posts = Post.all%>
+	<%@posts.each do |post|%>
+		<% if post.boxes.nil?%>
+			post.destroy
 		<% end %>
-		<% @posts = Post.all.paginate(:per_page => 4, :page => params[:page])%>
-			<div id="search_title">Recently Created [By you and other users]</div>
-			<%= will_paginate @posts%>
-		<span id="title_text_large">Posts </span>
+	<% end %>
+	
 		
-		<% @posts.each do |post|%>
-			
-	   		 	<% if post.boxes.first.respond_to?('image')%>
-	   		 <div class="post_collection_main_items">
-				<span class="box_options"><%= link_to "Author: " + post.user.username, searches_path(:search => post.user.username)%></span>
-	   		 	<%= link_to image_tag (post.boxes.first.image.url), post_path(post)%>
-	   		 </div>
-				<% end %>
-		<% end %>
+	<div id="post_collection_main">
+	<%= render 'post_collection_main'%>
 	</div>
 	<div id="post_favorites">	
 		<div id="search_title">Your Favorites</div>
 		<span id="title_text_large">Favorites</span>
 	<% current_user.favorites.each do |postid|%>
 		<div class="post_collection_main_items">
-				<span class="box_options"><%= link_to "Author: " + Post.find(postid.to_s).user.username, searches_path(:search => Post.find(postid.to_s).user.username)%></span>
-		
-		<%= link_to image_tag (Post.find(postid.to_s).boxes.first.image.url, :class => :favorite_images), post_path(postid.to_s)%>
 		<span class="box_options"><%= link_to "Remove", delete_favorite_path(:delete_favorite => postid.to_s)%></span>
+		<% @temp_post = Post.find(postid.to_s) %>
+		<%= link_to image_tag (@temp_post.boxes.first.image.url, :class => :favorite_images), post_path(postid.to_s),:title => "Title: " + @temp_post.title + "Tags: " + @temp_post.tag_list.to_s%>
+		<span class="box_options"><%= link_to "Author: " + Post.find(postid.to_s).user.username, searches_path(:search => Post.find(postid.to_s).user.username)%></span>
+		
 		</div>
 	<% end %>
 	</div>

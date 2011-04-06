@@ -1,11 +1,12 @@
-
+<%= search_titlify("Posts matching: " + params[:search].downcase)%>
 		<% @posts.each do |post| %>
-		<%= search_titlify("Posts matching: " + params[:search].downcase)%>
+		
 			<div class="post_collection_main_items">
 			
 			<% if post.boxes.first.respond_to?('image')%>
 				<span class="box_options"><%= link_to "Author: " + post.user.username, searches_path(:search => post.user.id)%></span>
 			<%= link_to image_tag (post.boxes.first.image.url, :class => :search_image,:title => post.tag_list), post_path(post)  %>
+			<a title="Title: <%=post.title %>, :Tags: <%=post.tag_list%>">(more info)</a>
 			<% else %>
 			<% end%>
 			</div>

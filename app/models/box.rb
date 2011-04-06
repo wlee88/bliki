@@ -4,6 +4,8 @@ class Box < ActiveRecord::Base
   belongs_to :user
   has_attached_file :image,:url => "/system/:attachment/:basename.:extension"
 
+  validates_presence_of :desc
+  validates_presence_of :tag_list
   acts_as_taggable
 
   protected  

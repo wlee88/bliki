@@ -36,7 +36,7 @@ class BoxesController < ApplicationController
    end
   
   def me
-    @boxes = Box.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+    @boxes = Box.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 11, :page => params[:page])
     @posts = Post.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
    
     respond_to do |format|
@@ -75,6 +75,7 @@ class BoxesController < ApplicationController
        @box = Box.new
         @box.public = 't'
         @box.user = current_user
+        @box.oftype = "image"
         @box.save
     elsif Box.last.desc.nil?
       @box = Box.last
@@ -82,6 +83,7 @@ class BoxesController < ApplicationController
        @box = Box.new
         @box.public = 't'
         @box.user = current_user
+        @box.oftype = "image"
         @box.save
     end
     redirect_to(edit_box_path(@box))
@@ -160,12 +162,16 @@ class BoxesController < ApplicationController
   def update_sort_posts
    
      render :update do |page|
+       
        if params[:sort] == "all"
-         @posts = Post.all.order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
-      else
-      @posts = Post.tagged_with(params[:sort]).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
-     end
-     page.replace_html "my_posts_collection", :partial => 'posts/post_collection', :object => @boxes
+         puts "called ALL"
+          @posts = Post.order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+        elsif params[:sort] == filler_string
+          @posts = Post.order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+        else
+          @posts = Post.tagged_with(params[:sort]).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+        end
+     page.replace_html "post_collection", :partial => 'posts/post_collection', :object => @posts
    end
   end  
 

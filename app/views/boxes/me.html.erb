@@ -1,18 +1,16 @@
 <% content_for :title do %>
 <span id="title_text"><%= get_username(current_user.id).capitalize %>'s Items</span>
 <% end %>
-
+	<%= render :partial => 'sort_box_posts'%>
+	<%= render :partial => 'sort_box_items' %>
 <div id ="collection">
 	
-	<div id="my_posts_collection">
-
-		<%= render :partial => 'sort_box_posts' %>
+	<div id="post_collection">
 		<%= render 'posts/post_collection'%>
 	</div>
 
 	<div id="my_box_collection">
-	<%= render :partial => 'sort_box_items' %>
-	<%= render 'box_collection'%>
+		<%= render 'box_collection'%>
 	</div>
 
 </div>

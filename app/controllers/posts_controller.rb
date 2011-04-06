@@ -156,7 +156,7 @@ end
   # GET /posts/1/edit
   def edit
 
-    @boxes = Box.all.paginate(:per_page => 8, :page => params[:page])
+    @boxes = Box.order.order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
     @post = Post.find(params[:id])
     
     respond_to do |format|
@@ -211,7 +211,7 @@ end
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to my_boxes_path }
       format.xml  { head :ok }
     end
   end

@@ -4,14 +4,17 @@
 
 
 </div>
-
 <div id ="workspace">
-
+	<%= link_to "Save", my_boxes_path, :id => :save_button%>
+	<%= link_to "Delete", post_path(@post), :id => :delete_button, :method => "delete"%>
 <%= render 'workspace' %>
 </div>
 
+
+
+
 <div id="sort_box">
-	Sort By:
+	Filter:
 	
 <% @options = [["all"],["images"],["text"], [filler_string] ] %>
 <% @post.tags.each do |tag|%>

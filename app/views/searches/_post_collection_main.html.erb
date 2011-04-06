@@ -1,0 +1,16 @@
+
+		<% @posts = Post.limit(25).order("updated_at DESC").paginate(:per_page => 5, :page => params[:page])%>
+			<div id="search_title">Recently Created [By You and other Users]</div>
+	<%= will_paginate @posts, :class => 'pagination ajax'%>
+		<span id="title_text_large">Posts </span>
+		
+		<% @posts.each do |post|%>
+			
+	   		 	<% if post.boxes.first.respond_to?('image')%>
+	   		 <div class="post_collection_main_items">
+				<span class="box_options"><%=link_to truncate(post.title, :length => 20), post_path(post) %></span>
+	   		 	<%= link_to image_tag (post.boxes.first.image.url), post_path(post), :title => "Title: " + post.title + "Tags: " + post.tag_list.to_s%> 
+				<span class="box_options"><%= link_to "Author: " + post.user.username, searches_path(:search => post.user.username)%></span>
+	   		 </div>
+				<% end %>
+		<% end %>
