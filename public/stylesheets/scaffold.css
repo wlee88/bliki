@@ -1131,6 +1131,23 @@ a.css4 { font-size: 2.2em; color: #02288b; text-decoration: none;}
 	-moz-box-shadow: 0px 0px 5px white;
 	-webkit-box-shadow:0px 0px 20px white;
 }
+#back_edit_form_button{
+	text-align: center;
+	display: inline-block;
+	color: white;
+	background-color: black;
+	margin-top:0px;
+	margin-bottom: 15px;
+	padding-left:233px;
+	padding-right: 235px;
+	padding-top:6px;
+	padding-bottom:6px;
+
+	text-decoration: none;
+	box-shadow: 10px 10px 5px white;
+	-moz-box-shadow: 0px 0px 5px white;
+	-webkit-box-shadow:0px 0px 20px white;
+}
 
 #delete_button{
 	text-align: center;

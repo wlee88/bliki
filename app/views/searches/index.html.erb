@@ -92,9 +92,12 @@
 	<div id="post_collection_main">
 	<%= render 'post_collection_main'%>
 	</div>
+	
 	<div id="post_favorites">	
 		<div id="search_title">Your Favorites</div>
 		<span id="title_text_large">Favorites</span>
+	
+	
 	<% current_user.favorites.each do |postid|%>
 		<div class="post_collection_main_items">
 		<span class="box_options"><%= link_to "Remove", delete_favorite_path(:delete_favorite => postid.to_s)%></span>

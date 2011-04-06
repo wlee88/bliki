@@ -17,9 +17,7 @@ class SearchesController < ApplicationController
         end
     else
       
-    clear_no_tag_texts_from_posts  
-    clear_no_tag_texts_from_boxes
-    clear_d_tag_texts_from_boxes
+
    @tags = Box.tag_counts_on(:tags)
    respond_to do |format|
        format.html

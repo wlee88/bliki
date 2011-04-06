@@ -77,7 +77,6 @@ class BoxesController < ApplicationController
         @box.public = 't'
         @box.user = current_user
         @box.oftype = "image"
-        @box.desc = "."
         @box.save
     elsif Box.last.desc.nil?
       @box = Box.last
@@ -86,7 +85,6 @@ class BoxesController < ApplicationController
         @box.public = 't'
         @box.user = current_user
         @box.oftype = "image"
-        @box.desc ="."
         @box.save
     end
     redirect_to(edit_box_path(@box))
