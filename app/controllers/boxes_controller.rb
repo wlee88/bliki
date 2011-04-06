@@ -36,7 +36,7 @@ class BoxesController < ApplicationController
    end
   
   def me
-    clear_d_tag_texts_from_boxes
+
     @boxes = Box.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 11, :page => params[:page])
     @posts = Post.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
   
