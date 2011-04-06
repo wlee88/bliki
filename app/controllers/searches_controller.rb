@@ -2,6 +2,7 @@ class SearchesController < ApplicationController
   before_filter :authenticate
   def index
     clear_no_tag_texts_from_posts
+    clear_no_tag_texts_from_boxes
     if params[:search]
        @posts = Post.tagged_with(params[:search])
        @boxes = Box.tagged_with(params[:search])
