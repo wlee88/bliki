@@ -18,7 +18,7 @@
 		<% if post.boxes.first.respond_to?('image')%>
 		<div class="mybox_me">
 				<span class="box_options"><%= link_to "Delete", post_path(post), :method => "delete"%></span>
-		<%= link_to image_tag (post.boxes.first.image.url), post_path(post), :title => "Tags: " + post.tag_list.to_s%>	
+		<%= link_to image_tag (post.boxes.first.image.url), post_path(post), :title => "Title: " + post.title.to_s + " Tags: " + post.tag_list.to_s%>	
 				<span class="box_options"><%= link_to "Edit", edit_post_path(post) %></span>
 	
 			</div>

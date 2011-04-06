@@ -36,9 +36,10 @@ class BoxesController < ApplicationController
    end
   
   def me
+    clear_d_tag_texts_from_boxes
     @boxes = Box.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 11, :page => params[:page])
     @posts = Post.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
-   
+  
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @boxes }
@@ -76,6 +77,7 @@ class BoxesController < ApplicationController
         @box.public = 't'
         @box.user = current_user
         @box.oftype = "image"
+        @box.desc = "."
         @box.save
     elsif Box.last.desc.nil?
       @box = Box.last
@@ -84,6 +86,7 @@ class BoxesController < ApplicationController
         @box.public = 't'
         @box.user = current_user
         @box.oftype = "image"
+        @box.desc ="."
         @box.save
     end
     redirect_to(edit_box_path(@box))

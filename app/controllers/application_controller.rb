@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   helper_method :clear_no_tag_texts_from_posts
+  helper_method :clear_d_tag_texts_from_boxes
   helper_method :current_user #obtains current attributes as object
   helper_method :get_boxes #gets current user's Boxes
   helper_method :get_username #Gets Username by current_id 
@@ -14,17 +15,32 @@ class ApplicationController < ActionController::Base
   def clear_no_tag_texts_from_posts
       @posts = Post.tagged_with(no_tag_text)
       @posts.each do |post|
-        post.tag_list = ""
-        post.save
+        post.destroy
       end 
   end
   
   def clear_no_tag_texts_from_boxes
      @boxes = Box.tagged_with(no_tag_text)
       @boxes.each do |box|
-        box.tag_list = ""
-        box.save
+        box.destroy
       end 
+  end
+  
+  def clear_d_tag_texts_from_boxes
+    @boxes = Box.tagged_with("d")
+      @boxes.each do |box|
+        box.destroy
+      end
+      @boxes = Box.where("desc = ?", ".")
+        @boxes.each do|box|
+          box.destroy
+        end
+        
+        @boxes = Box.where("desc = ?", "")
+          @boxes.each do|box|
+            box.destroy
+          end
+
   end
 
   def no_tag_text

@@ -53,14 +53,15 @@
 		<% @posts = Post.tagged_with(params[:search])%>
 		<% if !(@posts.empty?)%>
 					<div id="search_canvas_posts">
+								<%= render :partial => 'search_canvas_posts' %>	
+								</div>
 								
 			<% end %>
 			
-	<%= render :partial => 'search_canvas_posts' %>
-		<% if !(@posts.empty?)%>
-	</div>
+
 	
-	<% end %>
+
+
 	
 <% if !@boxes.empty? %>
 <div id="search_canvas_items">

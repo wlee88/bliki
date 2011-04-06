@@ -225,6 +225,19 @@ text-align: center;
 	/*border: 1px solid red;*/
 }
 
+#sign_in_container
+{
+	text-align: center;
+	margin-top: 150px;
+	margin-left: 500px;
+	margin-bottom: 50px;
+	width: 300px;
+	border: 1px solid black;
+	box-shadow: 10px 10px 5px black;
+	-moz-box-shadow: 10px 10px 5px black;
+	-webkit-box-shadow:10px 10px 5px black;
+	background-color: white;
+}
 
 #view_page img{
 
@@ -237,10 +250,10 @@ text-align: center;
 }
 
 #view_box{
-	margin-top: 150px;
-	margin-left: 50px;
+	margin-top: 120px;
+	margin-left: 400px;
 	margin-bottom: 50px;
-	width: 1100px;
+	width: 500px;
 	border: 1px solid black;
 	box-shadow: 10px 10px 5px black;
 	-moz-box-shadow: 10px 10px 5px black;
@@ -250,6 +263,7 @@ text-align: center;
 }
 
 #view_box img{
+	display:block;
 	margin-bottom: 10px;
 	margin-top: 8px;
 	width: 300px;
@@ -375,7 +389,7 @@ text-align: center;
 #my_box_collection{
 	
 	float: left;
-	min-height: 150px;
+	min-height: 300px;
 	padding-top: 30px;
 	padding-left:30px;
 	margin-bottom: 20px;
@@ -481,7 +495,7 @@ text-align: center;
 }
 
 .mybox_me img{
-	width: 150px;
+	width: 130px;
 	height: 160px;
 }
 
@@ -744,11 +758,25 @@ a:hover.mega_button
 }
 
 .form_field{
+	margin-left: 150px;
 	text-align: center;
 	font-size: 15px;
 	margin-top: 3px;
-	margin-left: 450px;
-	margin-right: 475px;
+	width: 200px;
+	box-shadow: 10px 10px 20px black;
+	-moz-box-shadow: 0px 0px 5px black;
+	-webkit-box-shadow:0px 0px 20px black;
+		text-shadow: 1px 1px 1px black;
+}
+
+.form_image_field{
+	margin-left: 100px;
+	margin-bottom: 30px;
+}
+.image_form_field{
+	float:left;
+	font-size: 15px;
+	margin-top: 3px;
 	box-shadow: 10px 10px 20px black;
 	-moz-box-shadow: 0px 0px 5px black;
 	-webkit-box-shadow:0px 0px 20px black;
@@ -853,10 +881,10 @@ a:hover.mega_button
 	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
 }
-a.css1 { font-size: 1.0em; color: #0F4FA8; text-decoration: none;}
-a.css2 { font-size: 1.2em; color: #2C17B1; text-decoration: none;}
-a.css3 { font-size: 1.4em; color: #14D100; text-decoration: none;}
-a.css4 { font-size: 1.6em; color: #FF9F00; text-decoration: none;}
+a.css1 { font-size: 1.5em; color: #ecf6ff; text-decoration: none;}
+a.css2 { font-size: 1.7em; color: #879fdd; text-decoration: none;}
+a.css3 { font-size: 1.9em; color: #4d6db8; text-decoration: none;}
+a.css4 { font-size: 2.2em; color: #02288b; text-decoration: none;}
 
 #search_title
 {
@@ -1000,7 +1028,7 @@ a.css4 { font-size: 1.6em; color: #FF9F00; text-decoration: none;}
 
 #post_collection{
 	background-color: #008500;
-	min-height: 430px;
+	min-height: 300px;
 	width: 500px;
 	float: left;
 	margin-left: 30px;
@@ -1035,6 +1063,7 @@ a.css4 { font-size: 1.6em; color: #FF9F00; text-decoration: none;}
 
 #collection{
 	margin-top: 120px;
+	margin-left: 20px;
 }
 
 #sacredo_signature{
