@@ -10,7 +10,7 @@
 	<% if params[:search] %>
 		
 
-			<%= link_to "Back", searches_path ,:id => :back_button%>
+			<%= link_to "Back", "javascript:history.back()" ,:id => :back_button%>
 
 		<% @user = User.find(:all, :conditions => ["username like ?", params[:search]]).first%>
 		

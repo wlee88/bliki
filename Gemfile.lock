@@ -38,6 +38,10 @@ GEM
     activesupport (3.0.3)
     acts-as-taggable-on (2.0.6)
     arel (2.0.9)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     erubis (2.6.6)
@@ -78,12 +82,14 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (0.3.25)
     will_paginate (2.3.15)
+    xml-simple (1.0.15)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   acts-as-taggable-on
+  aws-s3
   bcrypt-ruby
   in_place_editing
   paperclip!

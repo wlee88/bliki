@@ -11,6 +11,7 @@ gem "paperclip", :git => "http://github.com/thoughtbot/paperclip.git"
 gem 'will_paginate'
 gem 'acts-as-taggable-on'
 gem 'in_place_editing'
+gem 'aws-s3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

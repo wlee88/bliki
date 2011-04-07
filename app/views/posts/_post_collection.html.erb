@@ -1,5 +1,3 @@
-
-
 <% date = DateTime.now%>
 <span id="title_text_large">Posts - <%= date.strftime("%B") %> <%= date.year%> </span>
 <div id="paginate"><%= will_paginate @posts%></div>

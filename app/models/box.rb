@@ -2,8 +2,11 @@ class Box < ActiveRecord::Base
   has_many :comments
   has_and_belongs_to_many :posts
   belongs_to :user
-  has_attached_file :image,:url => "/system/:attachment/:basename.:extension"
-
+  has_attached_file :image,
+    :storage => :s3,
+    :bucket => 'blox-dissertation',
+    :path => "/:attachment/:basename.:extension",
+    :s3_credentials => "#{RAILS_ROOT}/config/s3.yml"
   acts_as_taggable
 
   protected  

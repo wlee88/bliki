@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   helper_method :browser_tag #returns code relevent for browser link viewing. A convenience method.
   helper_method :filler_string 
   helper :all
-  private
+
   
   def clear_no_tag_texts_from_posts
       @posts = Post.tagged_with(no_tag_text)
@@ -81,11 +81,10 @@ class ApplicationController < ActionController::Base
     if session[:user_id].nil?
     redirect_to log_in_path
   end
+  end
   
   def filler_string
     "---------"
   end
-  
-end
-  
+
 end
