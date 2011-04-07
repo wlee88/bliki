@@ -977,6 +977,22 @@ a.css4 { font-size: 2.2em; color: #02288b; text-decoration: none;}
 #tag_cloud{
 }
 
+#post_collection_users{
+	/*min-height: 330px;*/
+	text-align: center;
+	padding-top: 30px;
+	margin-left:50px;
+	margin-right:50px;
+	padding-left:30px;
+	margin-bottom:6px;
+	padding-bottom:30px;
+	display: block;
+	background-color: black;
+	box-shadow: 0px 0px 20px yellow;
+	-moz-box-shadow: 0px 0px 5px yellow;
+	-webkit-box-shadow:0px 0px 20px yellow;
+}
+
 .post_collection_main_items{
 	display: inline-block;
 	margin-left: 5px;
@@ -1075,7 +1091,10 @@ a.css4 { font-size: 2.2em; color: #02288b; text-decoration: none;}
 }
 
 .box_options{
-	display: block;
+}
+
+.box_options a{
+	text-decoration: none;
 }
 
 #save_button{
@@ -1211,4 +1230,26 @@ a:hover#back_form_button
 .form_field  input
 { width: 100%;}
 
+.user_box
+{
+		display: inline-block;
+	text-align: center;
+	width: 100px;
+	color: white;
 
+}
+
+.user_box a
+{
+	display: inline-block;
+	text-decoration: none;
+	padding-left:50px;
+	padding-right: 50px;
+}
+
+.user_box a:hover
+{
+	box-shadow: 10px 10px 5px yellow;
+	-moz-box-shadow: 0px 0px 5px yellow;
+	-webkit-box-shadow:0px 0px 20px yellow;
+}

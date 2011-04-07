@@ -20,7 +20,9 @@
 			
 			<% @user.posts.each do |post| %>
 			<% if post.boxes.first.respond_to?('image')%>
+				
 	   		 	<div class="post_collection_main_items">
+		<span class="box_options"><%=link_to truncate(post.title, :length => 20), post_path(post) %></span>
 	   		 	<%= link_to image_tag (post.boxes.first.image.url, :class => :favorite_image), post_path(post)%>
 				<a title="Title: <%=post.title %>, Tags: <%=post.tag_list%>">(more info)</a>
 	   		 	</div>
@@ -93,13 +95,27 @@
 	<%= render 'post_collection_main'%>
 	</div>
 	
+	<div id="post_collection_users">
+		<div id="search_title">Browse posts other Users</div>
+		<%@users = User.all%>
+		<% @users.each do |user|%>
+			<div class="user_box"><%= link_to user.username, searches_path(:search => user.username)%></div>
+		<% end %>
+	</div>
+	
 	<div id="post_favorites">	
 		<div id="search_title">Your Favorites</div>
 		<span id="title_text_large">Favorites</span>
-	
-	
+		<% current_user.favorites.each do |postid|%>
+			<div class="post_collection_main_items">
+			<span class="box_options"><%= link_to "Remove", delete_favorite_path(:delete_favorite => postid.to_s)%></span>
+			<% @temp_post = Post.find(postid.to_s) %>
+			<%= link_to image_tag (@temp_post.boxes.first.image.url, :class => :favorite_images), post_path(postid.to_s),:title => "Title: " + @temp_post.title + "Tags: " + @temp_post.tag_list.to_s%>
+			<span class="box_options"><%= link_to "Author: " + Post.find(postid.to_s).user.username, searches_path(:search => Post.find(postid.to_s).user.username)%></span>
 
-	</div>
-	<% end %>
+			</div>
+		<% end %>
+		</div>
+		<% end %>
 
 </div>

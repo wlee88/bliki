@@ -156,7 +156,7 @@ end
   # GET /posts/1/edit
   def edit
 
-    @boxes = Box.order.order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
+    @boxes = Box.where("user_id = ?", current_user.id).order("updated_at DESC").paginate(:per_page => 8, :page => params[:page])
     @post = Post.find(params[:id])
     
     respond_to do |format|
