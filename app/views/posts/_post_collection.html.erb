@@ -1,11 +1,9 @@
 <% date = DateTime.now%>
 <span id="title_text_large">Posts - <%= date.strftime("%B") %> <%= date.year%> </span>
 <div id="paginate"><%= will_paginate @posts%></div>
-<br />
-<br />
 <hr />
-<br />
-	
+
+
 <div class ="mybox_me">
 	<%= link_to "Add", new_post_path%>
 	<%= link_to image_tag ("/images/stock/Add.png"),new_post_path %>
