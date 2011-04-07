@@ -98,15 +98,7 @@
 		<span id="title_text_large">Favorites</span>
 	
 	
-	<% current_user.favorites.each do |postid|%>
-		<div class="post_collection_main_items">
-		<span class="box_options"><%= link_to "Remove", delete_favorite_path(:delete_favorite => postid.to_s)%></span>
-		<% @temp_post = Post.find(postid.to_s) %>
-		<%= link_to image_tag (@temp_post.boxes.first.image.url, :class => :favorite_images), post_path(postid.to_s),:title => "Title: " + @temp_post.title + "Tags: " + @temp_post.tag_list.to_s%>
-		<span class="box_options"><%= link_to "Author: " + Post.find(postid.to_s).user.username, searches_path(:search => Post.find(postid.to_s).user.username)%></span>
-		
-		</div>
-	<% end %>
+
 	</div>
 	<% end %>
 
